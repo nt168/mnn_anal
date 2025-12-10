@@ -1,0 +1,62 @@
+# MNN LLM Bench 系统配置
+# 此文件存储系统级别的配置参数
+
+[llm_bench]
+# MNN llm_bench 可执行文件路径
+path = "~/mnn/build/llm_bench"
+
+[model_config]
+# 模型配置文件目录
+config_dir = "config"
+# 模型配置文件名
+config_file = "models.toml"
+
+[logging]
+# 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+level = "INFO"
+# 日志文件目录
+log_dir = "logs"
+# 日志文件名
+log_file = "benchmark.log"
+# 是否在控制台输出
+console = true
+# 控制台日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+console_level = "ERROR"
+# 日志轮换配置（每日轮换）
+# 每天午夜自动轮换
+# 保留多少个备份文件
+rotation_backup_count = 7
+
+[execution]
+# 测试执行超时时间（秒）
+timeout = 300
+# 命令执行缓冲区大小
+buffer_size = 1048576  # 1MB
+
+[temp]
+# 临时文件根目录（用于存储MNN benchmark的原始输出）
+temp_dir = "temp"
+# 是否在测试完成后清理临时文件（推荐false，手动清理）
+auto_cleanup = false
+
+[results]
+# 结果输出根目录
+output_dir = "results"
+
+[tasks]
+# 批量测试任务配置文件目录
+task_dir = "tasks"
+
+[database]
+# 数据库文件目录
+db_dir = "data"
+# 数据库文件名
+db_file = "benchmark_results.db"
+
+[prompts]
+# 提示词文件目录
+prompts_dir = "prompts"
+
+[analysis]
+# 数据分析结果输出目录
+analysis_dir = "analysis_results"

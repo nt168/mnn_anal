@@ -1,0 +1,94 @@
+task_name: "阶段2：收敛现象探测"
+description: "关键变化区密集采样，检测首次收敛现象和边际效益递减点"
+output_dir: "results/stage2_convergence_detection"
+
+global_config:
+  timeout: 1800
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 收敛现象探测主测试套件
+- suit_name: "convergence_zone_intensive_sampling"
+  description: "在关键变化区[48-128]密集采样，检测CV收敛现象"
+
+  variables:
+  # 关键变化区密集采样
+  - name: n_prompt
+    values: [48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128]
+    description: "11个密集采样点，覆盖关键变化区间，检测收敛现象"
+
+  fixed_params:
+    n_repeat: 10              # 10次重复计算统计值
+    n_generate: "__stage0_selected__"  # 使用阶段0确定的生成长度
+    threads: 4                # 保持一致性
+    precision: 1              # Normal精度
+    variable_prompt: 0        # 固定提示词模式
+    kv_cache: "false"         # 禁用KV缓存
+
+# 收敛现象精细验证
+- suit_name: "convergence_precision_validation"
+  description: "对疑似收敛点进行精细验证，确保收敛现象的真实性"
+
+  variables:
+  # 基于主测试结果的收敛点细化
+  - name: n_prompt
+    values: [60, 64, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90]
+    description: "收敛点周边细粒度采样，14个点验证收敛的精确位置"
+
+  fixed_params:
+    n_repeat: 15              # 增加重复次数提高验证精度
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 收敛稳定性测试
+- suit_name: "convergence_stability_test"
+  description: "验证收敛现象的稳定性和可重复性"
+
+  variables:
+  # 重点验证疑似收敛位置
+  - name: n_prompt
+    values: [64, 72, 80, 88, 96]
+    description: "疑似收敛点稳定性验证"
+
+  fixed_params:
+    n_repeat: 20              # 高重复次数确保稳定性验证
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 梯度分析专项测试
+- suit_name: "gradient_analysis_test"
+  description: "专项梯度分析，计算CV变化的斜率和拐点"
+
+  variables:
+  # 梯度计算的密集采样
+  - name: n_prompt
+    values: [52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100, 104]
+    description: "梯度分析专用采样点，14个点计算斜率变化"
+
+  fixed_params:
+    n_repeat: 12              # 适中重复次数平衡精度和效率
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 配置说明：
+# 1. 测试目标：在关键变化区检测首次收敛现象
+# 2. 核心指标：
+#    - 收敛现象：连续3-4点CV变化 < 10%
+#    - 边际效益：CV改善幅度 < 5%
+#    - 梯度分析：|gradient| < 0.05（接近水平）
+# 3. 测试策略：
+#    - 主探测：11个密集点覆盖关键区间
+#    - 精细验证：收敛点周边14个细粒度点
+#    - 稳定性验证：疑似收敛点高重复测试
+#    - 梯度分析：专用采样计算斜率变化
+# 4. 预期结果：明确首次收敛现象位置，验证其稳定性和边际效益递减
+# 5. 决策标准：检测到收敛现象，为阶段3提供验证基准

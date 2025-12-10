@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ------------- | ---------: |
+| model_0.6B_Qwen                | 429.93 MiB | CPU        |     4 | Low        | pp512         | 276.23 ± 0.44 |
+| model_0.6B_Qwen                | 429.93 MiB | CPU        |     4 | Low        | tg128         | 71.17 ± 1.57 |
+

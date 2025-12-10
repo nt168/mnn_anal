@@ -1,0 +1,4 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | pType      | llm_demo   | speed(tok/s) |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ---------- | ------------ |
+| SmolVLM2-256M                  | 143.10 MiB | CPU        |     6 | Low        | true | fix        | prompt=496<br>decode=56 | 1056.42 ± 1.84<br>95.48 ± 0.27 |
+

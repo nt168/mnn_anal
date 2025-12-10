@@ -1,0 +1,13 @@
+const fibonacci = (n) => {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+const perfectSquare = (num) => {
+    const sqrt = Math.sqrt(num);
+    return sqrt === Math.floor(sqrt);
+};
+
+// 使用示例
+console.log(fibonacci(10)); // 输出: 55
+console.log(perfectSquare(16)); // 输出: true

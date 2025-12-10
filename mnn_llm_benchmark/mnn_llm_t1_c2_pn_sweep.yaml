@@ -1,0 +1,24 @@
+task_name: "mnn_llm_t1_c2_pn_sweep"
+description: "t=1, c=2, kv=false, mmap=0, dyo=0 下，扫描 p/n 组合对性能的影响"
+output_dir: "results/mnn_llm_t1_c2_pn_sweep"
+taskset: "taskset -c 1"
+
+global_config:
+  timeout: 600          # 单条用例最大 600s，可按需调整
+  repeat: 3             # -rep，重复次数
+  models: ["qwen3_06b","hunyuan_05b"] 
+
+benchmark_suits:
+  - suit_name: "pn_grid_t1_c2_kvfalse_mmap0_dyo0"
+    description: "threads=1, precision=2, kv=false, mmap=0, dynamicOption=0 固定时，扫描不同 p/n 组合"
+    variables:
+      - name: "n_prompt"      # 对应 -p
+        values: [64, 128, 192, 256, 320, 384, 448, 512, 576, 640, 704, 768, 832, 896, 960, 1024]
+      - name: "n_gen"         # 对应 -n
+        values: [32, 64, 96, 128, 160, 192, 224, 256]
+    fixed_params:
+      threads: 1              # -t
+      precision: 2            # -c 2
+      kv_cache: "false"       # -kv false
+      mmap: "0"               # -mmp 0
+      dynamicOption: 0        # -dyo 0

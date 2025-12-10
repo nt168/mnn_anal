@@ -1,0 +1,122 @@
+task_name: "阶段1：稳定性验证"
+description: "验证提示词模式的长期稳定性和可重现性"
+output_dir: "results/stage1_stability_verification"
+
+global_config:
+  timeout: 1800
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 长期稳定性验证测试套件
+- suit_name: "long_term_stability_test"
+  description: "3种提示词模式的长期稳定性验证，每次模式测试15次"
+
+  variables:
+  # 三种模式稳定性对比
+  - name: variable_prompt
+    values: [0, 1]
+    description: "0：固定模式，1：可变模式"
+
+  - name: "use_file_mode"
+    values: [true, false]
+    description: "true：文件模式，false：常规模式"
+
+  fixed_params:
+    threads: 4
+    precision: 1               # Normal精度
+    n_prompt: 128             # 标准长度
+    n_generate: 64            # 标准长度
+    kv_cache: "false"         # 确保独立性
+    n_repeat: 15              # 15次重复测试长期稳定性
+
+# 时间一致性验证测试套件
+- suit_name: "temporal_consistency_test"
+  description: "不同时间段测试结果的一致性验证"
+
+  variables:
+  # 模拟不同时间段的测试
+  - name: variable_prompt
+    values: [0, 1]
+    description: "不同模式的组合"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 12              # 12次重复验证时间一致性
+
+# 环境敏感度测试套件
+- suit_name: "environmental_sensitivity_test"
+  description: "环境因素对测试结果稳定性的影响"
+
+  variables:
+  # 不同环境配置下的稳定性测试
+  - name: variable_prompt
+    values: [0, 1]
+    description: "基础模式测试"
+
+  # 环境参数变化测试
+  - name: "memory_pressure"
+    values: ["normal", "slight_load"]
+    description: "内存压力条件：正常和轻微负载"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 10              # 适中重复数
+
+# 可重现性专项测试
+- suit_name: "reproducibility_test"
+  description: "相同配置下的结果可重现性验证"
+
+  variables:
+  # 针对稳定性良好的模式进行重点验证
+  - name: variable_prompt
+    values: [0, 1]
+    description: "稳定模式验证"
+
+  fixed_params:
+    threads: 4
+    precision: 2               # 提高精度验证可重现性
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 20              # 高重复确保可重现性统计
+
+# 固定模式稳定性专项
+- suit_name: "fixed_mode_stability_focus"
+  description: "固定16模式稳定性专项深入验证"
+
+  variables:
+  - name: variable_prompt
+    values: [0]
+    description: "固定模式深度验证"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 25              # 最高重复数验证稳定性
+
+# 配置说明：
+# 1. 测试目标：验证提示词模式的长期稳定性和可重现性
+# 2. 关键指标：
+#    - 长期CV变化趋势（15次重复）
+#    - 时间相关性（不同时间段测试）
+#    - 环境敏感度（环境变化影响）
+#    - 可重现性（相同配置的相关性）
+# 3. 判定标准：
+#    - 长期CV ≤ 3%
+#    - 时间相关性 ≥ 0.95
+#    - 环境影响 < 2%
+# 4. 测试策略：
+#    - 多维度稳定性验证
+#    - 重点突出固定模式的稳定性优势
+#    - 为阶段2兼容性测试提供稳定模式选择

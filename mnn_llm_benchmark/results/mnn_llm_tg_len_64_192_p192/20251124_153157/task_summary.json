@@ -1,0 +1,70 @@
+{
+  "task_info": {
+    "name": "mnn_llm_tg_len_64_192_p192",
+    "description": "在 t=1, c=2, kv=false, mmap=0, dyo=0 条件下，固定 PP=192，扫描 TG 长度 64~192(step 16) 的单变量测试集",
+    "execution_time": 829.2387878894806,
+    "timestamp": "2025-11-24T15:45:46.490483",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 18,
+    "successful_cases": 18,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "tg_len_64_192_step16_p192_t1_c2": {
+      "total": 18,
+      "success": 18,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "hunyuan_05b",
+    "qwen3_06b"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_tg_len_64_192_p192",
+    "description": "在 t=1, c=2, kv=false, mmap=0, dyo=0 条件下，固定 PP=192，扫描 TG 长度 64~192(step 16) 的单变量测试集",
+    "output_dir": "results/mnn_llm_tg_len_64_192_p192",
+    "global_config": {
+      "timeout": 600,
+      "repeat": 3,
+      "models": [
+        "hunyuan_05b",
+        "qwen3_06b"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "tg_len_64_192_step16_p192_t1_c2",
+        "description": "threads=1, precision=2, kv=false, mmap=0, dynamicOption=0 固定， 仅变动 TG 长度 (64~192 step 16)，PP 长度固定为 192，用于观察 “中等 GenLength 区间”的稳定性与性能趋势。\n",
+        "variables": [
+          {
+            "name": "n_gen",
+            "values": [
+              64,
+              80,
+              96,
+              112,
+              128,
+              144,
+              160,
+              176,
+              192
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0,
+          "n_prompt": 192
+        }
+      }
+    ]
+  }
+}

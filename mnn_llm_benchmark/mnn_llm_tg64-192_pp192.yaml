@@ -1,0 +1,25 @@
+task_name: "mnn_llm_tg_len_64_192_p192"
+description: "在 t=1, c=2, kv=false, mmap=0, dyo=0 条件下，固定 PP=192，扫描 TG 长度 64~192(step 16) 的单变量测试集"
+output_dir: "results/mnn_llm_tg_len_64_192_p192"
+
+global_config:
+  timeout: 600              # 单条用例最大 600s，可按需调整
+  repeat: 3                 # -rep，重复次数，方便看方差
+  models: ["hunyuan_05b", "qwen3_06b"]  # 按需替换/删减为你的模型别名
+
+benchmark_suits:
+  - suit_name: "tg_len_64_192_step16_p192_t1_c2"
+    description: >
+      threads=1, precision=2, kv=false, mmap=0, dynamicOption=0 固定，
+      仅变动 TG 长度 (64~192 step 16)，PP 长度固定为 192，用于观察
+      “中等 GenLength 区间”的稳定性与性能趋势。
+    variables:
+      - name: "n_gen"          # 对应 -n，Gen Length
+        values: [64, 80, 96, 112, 128, 144, 160, 176, 192]
+    fixed_params:
+      threads: 1               # -t
+      precision: 2             # -c
+      kv_cache: "false"        # -kv
+      mmap: "0"                # -mmp
+      dynamicOption: 0         # -dyo
+      n_prompt: 192            # -p 固定 PP 长度

@@ -1,0 +1,70 @@
+{
+  "task_info": {
+    "name": "mnn_llm_pn_sweep_step64",
+    "description": "单线程（t=1）下的大范围 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=true。 p, n ∈ [32..1024]，步进为 64。 由于从 32 开始以 64 为步长，实际可达最大值为 992（无法整步到 1024）。\n",
+    "execution_time": 0.36188244819641113,
+    "timestamp": "2025-11-27T15:42:29.673654",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 768,
+    "successful_cases": 0,
+    "failed_cases": 768,
+    "success_rate": "0.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "pn_sweep_step64": {
+      "total": 768,
+      "success": 0,
+      "failed": 768
+    }
+  },
+  "models_used": [
+    "Qwen2.5-0.5B",
+    "SmolVLM2-256M",
+    "Llama-3.2-1B"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_pn_sweep_step64",
+    "description": "单线程（t=1）下的大范围 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=true。 p, n ∈ [32..1024]，步进为 64。 由于从 32 开始以 64 为步长，实际可达最大值为 992（无法整步到 1024）。\n",
+    "taskset": "taskset -c 1",
+    "output_dir": "results/mnn_llm_pn_sweep_step64",
+    "global_config": {
+      "threads": 1,
+      "repeat": 3,
+      "precision": 2,
+      "mmap": "0",
+      "dynamicOption": 0,
+      "vp": 1,
+      "kv_cache": "true",
+      "timeout": 600,
+      "models": [
+        "Qwen2.5-0.5B",
+        "SmolVLM2-256M",
+        "Llama-3.2-1B"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_sweep_step64",
+        "description": "p, n 从 32 开始到约 1024，步长为 64 的笛卡尔积扫描。 实际取值为 [32, 96, ..., 992]（共 16 个点），p 与 n 全组合，共 256 组。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "start": 32,
+            "end": 1024,
+            "step": 64
+          },
+          {
+            "name": "n_gen",
+            "start": 32,
+            "end": 1024,
+            "step": 64
+          }
+        ],
+        "fixed_params": {}
+      }
+    ]
+  }
+}

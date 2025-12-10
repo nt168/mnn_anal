@@ -1,0 +1,62 @@
+task_name: "阶段0：参数优化预实验"
+description: "三步筛选法确定最优生成长度（32/64/128），测试稳定性和效率平衡"
+output_dir: "results/stage0_parameter_optimization"
+
+global_config:
+  timeout: 1800
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 参数优化预实验主测试套件
+- suit_name: "generation_length_stability_test"
+  description: "测试32/64/128三种生成长度的稳定性、区分能力和效率"
+
+  variables:
+  # 生成长度测试
+  - name: n_generate
+    values: [32, 64, 128]
+    description: "三种候选生成长度，通过三步筛选法确定最优"
+
+  # 提示词长度区间划分
+  - name: n_prompt
+    values: [8, 16, 32, 48, 64, 128]
+    description: "短区间[8-16]、中区间[32-48]、长区间[64-128]的关键点"
+
+  fixed_params:
+    n_repeat: 10              # 10次重复计算统计值
+    threads: 4                 # 固定线程数
+    precision: 1               # Normal精度确保测量稳定性
+    variable_prompt: 0         # 固定提示词模式
+    kv_cache: "false"          # 禁用KV缓存确保独立性
+
+# 效率验证辅助测试套件
+- suit_name: "efficiency_validation"
+  description: "验证选定生成长度的实际测试效率"
+
+  variables:
+  # 基于主测试结果的验证点
+  - name: n_generate
+    values: [32, 64, 128]
+    description: "候选生成长度效率验证"
+
+  # 典型提示词长度
+  - name: n_prompt
+    values: [16, 32, 64, 96, 128]
+    description: "常用提示词长度点的效率测试"
+
+  fixed_params:
+    n_repeat: 5               # 效率测试减少重复次数
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 配置说明：
+# 1. 测试目标：通过三步筛选法确定最优生成长度
+# 2. 筛选标准：
+#    - 第1步：所有区间tg的CV ≤ 15%（稳定性检查）
+#    - 第2步：长短区间差异 ≥ 20%（区分能力检查）
+#    - 第3步：实际测试时间最短（效率优化选择）
+# 3. 数据分析：计算tg值的CV，评估测量稳定性和区分能力
+# 4. 实验分组：3生成长度 × 3区间 × 10重复 = 90个测试点
+# 5. 决策输出：最终确定的最优生成长度及详细依据

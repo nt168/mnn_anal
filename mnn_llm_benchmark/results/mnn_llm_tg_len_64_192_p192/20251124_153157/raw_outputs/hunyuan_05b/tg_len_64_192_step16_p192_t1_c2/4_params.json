@@ -1,0 +1,11 @@
+{
+  "case_number": 4,
+  "suit_name": "tg_len_64_192_step16_p192_t1_c2",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969616_raw.txt -t 1 -c 2 -p 192 -n 112 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 32.38971447944641
+  }
+}

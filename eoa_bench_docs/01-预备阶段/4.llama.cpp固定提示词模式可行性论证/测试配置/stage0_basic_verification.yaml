@@ -1,0 +1,99 @@
+task_name: "阶段0：基础验证"
+description: "三种提示词模式的基本性能对比，验证统计等价性"
+output_dir: "results/stage0_basic_verification"
+
+global_config:
+  timeout: 900
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 基础验证主测试套件
+- suit_name: "prompt_mode_basic_comparison"
+  description: "固定16模式 vs 可变模式 vs 文件模式的基本性能对比测试"
+
+  variables:
+  # 三种提示词模式对比
+  - name: variable_prompt
+    values: [0, 1]
+    description: "0：固定模式，1：可变模式"
+
+  # 文件模式通过prompt_file参数区分
+  - name: "use_file_mode"
+    values: [true, false]
+    description: "true：文件模式，false：常规模式"
+
+  fixed_params:
+    threads: 4
+    precision: 1               # Normal精度确保测量稳定性
+    n_prompt: 128             # 标准提示词长度
+    n_generate: 64            # 标准生成长度
+    kv_cache: "false"         # 禁用KV缓存确保独立性
+    n_repeat: 10              # 10次重复获取统计基础
+
+# 固定模式专门测试
+- suit_name: "fixed_mode_detailed_test"
+  description: "固定16模式详细性能测试"
+
+  variables:
+  # 固定模式的细化配置
+  - name: variable_prompt
+    values: [0]
+    description: "固定提示词模式"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 10
+
+# 可变模式专门测试
+- suit_name: "variable_mode_detailed_test"
+  description: "可变提示词模式详细性能测试"
+
+  variables:
+  - name: variable_prompt
+    values: [1]
+    description: "可变提示词模式"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 10
+
+# 文件模式专门测试
+- suit_name: "file_mode_detailed_test"
+  description: "文件提示词模式详细性能测试"
+
+  variables:
+  - name: variable_prompt
+    values: [0]
+    description: "文件模式（variable_prompt状态不影响）"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 10
+    prompt_file: "standard_test_prompt.txt"  # 标准测试提示词文件
+
+# 配置说明：
+# 1. 测试目标：通过三种模式的基本对比验证统计等价性
+# 2. 设计原理：
+#    - 主对比：三模式综合比较
+#    - 详细测试：每种模式的专门性能测试
+# 3. 统计要求：每种模式10次重复，确保ANOVA分析的统计效力
+# 4. 分析指标：
+#    - Prefill速度、Decode速度、总体速度
+#    - 各模式的CV值，评估稳定性
+#    - ANOVA分析，验证统计等价性
+# 5. 判定标准：
+#    - ANOVA p值 > 0.05 或 η² < 0.01
+#    - 各模式CV < 3%
+#    - 模式间差异度 < 5%

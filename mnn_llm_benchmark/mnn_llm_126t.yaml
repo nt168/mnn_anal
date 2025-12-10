@@ -1,0 +1,43 @@
+task_name: "mnn_llm_bind_hunyuan_05b_suite"
+description: >
+  D3000M 上 hunyuan_05b-1t / 2t / 6t 的绑核性能测试：
+  分别使用 taskset 绑核到 1 / 2 / 6 个核，并在稳定区间
+  p∈{192,384,512}, n∈{64,128} 上扫描。
+
+output_dir: "results/mnn_llm_bind_hunyuan_05b_suite"
+
+# 公共配置：除了模型/线程/绑核外，其余参数都固定
+global_config:
+  timeout: 600
+  repeat: 3          # -rep 3
+  precision: 2       # -c 2
+  mmap: "0"          # -mmp 0
+  dynamicOption: 0   # -dyo 0
+  kv_cache: "true"   # -kv true
+  vp: 1              # -vp 1
+
+benchmark_suits:
+  # 1) taskset -c 3, 模型 hunyuan_05b-1t, 线程数 1
+  - suit_name: "bind_c3_hunyuan_05b_1t"
+    description: "taskset -c 3, 模型 hunyuan_05b-1t, -t 1"
+    bind_cores: "3"               # 对应 taskset -c 3
+    model: "hunyuan_05b-1t"       # 逻辑模型名，由外层脚本映射到 config.json
+    threads: 1                    # -t 1
+    variables:
+      - name: "n_prompt"          # -p
+        values: [192, 384, 512]
+      - name: "n_gen"             # -n
+        values: [64, 128]
+    fixed_params: {}
+
+  # 2) taskset -c 3,7, 模型 hunyuan_05b-2t, 线程数 2
+  - suit_name: "bind_c3_7_hunyuan_05b_2t"
+    description: "taskset -c 3,7, 模型 hunyuan_05b-2t, -t 2"
+    bind_cores: "3,7"             # 对应 taskset -c 3,7
+    model: "hunyuan_05b-2t"
+    threads: 2                    # -t 2
+    variables:
+      - name: "n_prompt"
+        values: [192, 384, 512]
+      - name: "n_gen_
+

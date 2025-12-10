@@ -1,0 +1,116 @@
+task_name: "阶段4：多模型一致性验证"
+description: "验证收敛现象在不同模型间的普适性，确认参数的跨模型适用性"
+output_dir: "results/stage4_multimodel_consistency"
+
+global_config:
+  timeout: 3600
+  models: [qwen3_0_6b, qwen3_1_8b, qwen3_vl_2b]
+
+benchmark_suits:
+# 多模型一致性主验证测试
+- suit_name: "cross_model_convergence_validation"
+  description: "在多个模型上验证收敛现象的存在性和一致性"
+
+  variables:
+  # 跨模型验证的关键长度点
+  - name: n_prompt
+    values: [32, 48, 64, 80, 96, 112, 128, 144, 160, 192]
+    description: "跨模型验证的10个关键长度点，覆盖收敛前后的完整范围"
+
+  fixed_params:
+    n_repeat: 20              # 20次重复确保跨模型验证精度
+    n_generate: "__stage0_selected__"  # 使用阶段0确定的生成长度
+    threads: 4                 # 统一线程配置
+    precision: 1               # Normal精度
+    variable_prompt: 0         # 固定提示词模式
+    kv_cache: "false"          # 禁用KV缓存
+
+# 模型差异化特征验证
+- suit_name: "model_specific_characteristics"
+  description: "验证不同模型的特定收敛特征和差异化表现"
+
+  variables:
+  # 模型特定的验证点
+  - name: n_prompt
+    values: [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]
+    description: "模型差异化特征验证的10个点，重点关注收敛区间"
+
+  fixed_params:
+    n_repeat: 15              # 适中的重复次数
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 参数通用性验证
+- suit_name: "parameter_generality_validation"
+  description: "验证选定参数在不同模型上的通用性和适用性"
+
+  variables:
+  # 参数通用性验证的关键配置
+  - name: n_prompt
+    values: [48, 64, 80, 96, 128, 160]
+    description: "参数通用性验证的6个核心点"
+
+  fixed_params:
+    n_repeat: 18              # 较高重复确保可靠性
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 一致性量化指标验证
+- suit_name: "consistency_metrics_validation"
+  description: "专门验证一致性量化指标的计算和阈值"
+
+  variables:
+  # 一致性指标专用验证点
+  - name: n_prompt
+    values: [40, 56, 72, 88, 104, 120, 136, 152]
+    description: "一致性指标验证的8个专用点"
+
+  fixed_params:
+    n_repeat: 25              # 最高重复次数确保指标计算精度
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# VL模型特殊处理验证
+- suit_name: "vl_model_special_handling"
+  description: "验证视觉语言模型的特殊处理方案和参数调整"
+
+  variables:
+  # VL模型特定的验证配置
+  - name: n_prompt
+    values: [64, 80, 96, 112, 128, 144, 160]
+    description: "VL模型特殊处理的7个验证点"
+
+  fixed_params:
+    n_repeat: 16              # VL模型适中重复次数
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 配置说明：
+# 1. 测试目标：验证收敛现象的跨模型普适性和参数通用性
+# 2. 验证模型：
+#    - qwen3_0_6b：主要验证模型（完整对比基准）
+#    - qwen3_1_8b：中等规模模型验证
+#    - qwen3_vl_2b：视觉语言模型特殊验证
+# 3. 一致性量化指标：
+#    - 现象存在一致性：一致性得分 >= 80%
+#    - 收敛位置一致性：位置差异 <= 50%
+#    - 收敛程度一致性：收敛CV差异 <= 20%
+#    - 跨模型相关性：相关系数 >= 0.7
+# 4. 验证重点：
+#    - 收敛现象的普遍存在性
+#    - 收敛后边际效益递减的一致性
+#    - 参数设置的跨模型适用性
+#    - VL模型特殊处理方案
+# 5. 预期结果：确认参数的跨模型通用性，为基准测试提供标准化配置

@@ -1,0 +1,31 @@
+task_name: "mnn_llm_t6_pn_sweep"
+description: >
+  多线程（t=6）下的 p/n 组合测试。
+  固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=true。
+  p ∈ {192, 384, 512}，n ∈ {64, 128}。
+taskset: "taskset -c 0,1,2,4,5,6"
+
+output_dir: "results/mnn_llm_t6_pn_sweep"
+
+global_config:
+  threads: 6          # -t 6 
+  repeat: 3           # -rep 3
+  precision: 2        # -c 2
+  mmap: "0"           # -mmp 0
+  dynamicOption: 0    # -dyo 0
+  vp: 1               # -vp 1
+  kv_cache: "true"    # -kv true
+  timeout: 600
+  # 如需固定模型，可以在这里加上：
+  models: ["hunyuan_05b_6t"]
+
+benchmark_suits:
+  - suit_name: "pn_grid_t6"
+    description: >
+      p ∈ {192, 384, 512}，n ∈ {64, 128} 的笛卡尔积扫描。
+    variables:
+      - name: "n_prompt"      # 映射到 -p
+        values: [192, 384, 512]
+      - name: "n_gen"         # 映射到 -n
+        values: [64, 128]
+    fixed_params: {}

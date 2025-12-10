@@ -1,0 +1,121 @@
+***********************************************************************************model_0.6B_Qwen: 2+3=？
+main, 252, cost time: 5056.098145 ms
+#################################
+prompt tokens num = 18
+decode tokens num = 297
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.49 s
+ decode time = 16.78 s
+ sample time = 1.60 s
+prefill speed = 36.38 tok/s
+ decode speed = 17.70 tok/s
+***********************************************************************************model_0.6B_Qwen: “春眠不觉晓”下一句？
+main, 252, cost time: 3057.094971 ms
+#################################
+prompt tokens num = 23
+decode tokens num = 190
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.41 s
+ decode time = 8.39 s
+ sample time = 0.72 s
+prefill speed = 55.89 tok/s
+ decode speed = 22.65 tok/s
+***********************************************************************************model_0.6B_Qwen: 中国首都是哪？
+main, 252, cost time: 4504.391113 ms
+#################################
+prompt tokens num = 18
+decode tokens num = 178
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.49 s
+ decode time = 9.88 s
+ sample time = 0.96 s
+prefill speed = 36.40 tok/s
+ decode speed = 18.01 tok/s
+***********************************************************************************model_0.6B_Qwen: 人民币符号？
+main, 252, cost time: 4451.995117 ms
+#################################
+prompt tokens num = 16
+decode tokens num = 250
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.42 s
+ decode time = 14.16 s
+ sample time = 1.33 s
+prefill speed = 37.97 tok/s
+ decode speed = 17.66 tok/s
+***********************************************************************************model_0.6B_Qwen: 光速是多少？
+main, 252, cost time: 3080.126953 ms
+#################################
+prompt tokens num = 17
+decode tokens num = 356
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.32 s
+ decode time = 16.60 s
+ sample time = 1.32 s
+prefill speed = 53.90 tok/s
+ decode speed = 21.44 tok/s
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***********************************************************************************model_0.5B_Hunyuan: 2+3=？
+main, 252, cost time: 6848.681152 ms
+#################################
+prompt tokens num = 8
+decode tokens num = 122
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.23 s
+ decode time = 5.70 s
+ sample time = 0.56 s
+prefill speed = 34.56 tok/s
+ decode speed = 21.41 tok/s
+***********************************************************************************model_0.5B_Hunyuan: “春眠不觉晓”下一句？
+main, 252, cost time: 4525.918945 ms
+#################################
+prompt tokens num = 12
+decode tokens num = 310
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.21 s
+ decode time = 12.34 s
+ sample time = 0.98 s
+prefill speed = 58.25 tok/s
+ decode speed = 25.12 tok/s
+***********************************************************************************model_0.5B_Hunyuan: 中国首都是哪？
+main, 252, cost time: 6619.786133 ms
+#################################
+prompt tokens num = 7
+decode tokens num = 204
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.28 s
+ decode time = 10.30 s
+ sample time = 0.93 s
+prefill speed = 25.06 tok/s
+ decode speed = 19.80 tok/s
+***********************************************************************************model_0.5B_Hunyuan: 人民币符号？
+main, 252, cost time: 4214.000977 ms
+#################################
+prompt tokens num = 6
+decode tokens num = 512
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.16 s
+ decode time = 21.42 s
+ sample time = 1.60 s
+prefill speed = 38.32 tok/s
+ decode speed = 23.91 tok/s
+***********************************************************************************model_0.5B_Hunyuan: 光速是多少？
+main, 252, cost time: 4280.860840 ms
+#################################
+prompt tokens num = 6
+decode tokens num = 512
+ vision time = 0.00 s
+  audio time = 0.00 s
+prefill time = 0.16 s
+ decode time = 21.62 s
+ sample time = 1.60 s
+prefill speed = 37.56 tok/s
+ decode speed = 23.68 tok/s

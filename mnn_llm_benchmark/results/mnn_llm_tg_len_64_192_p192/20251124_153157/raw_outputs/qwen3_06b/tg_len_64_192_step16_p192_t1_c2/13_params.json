@@ -1,0 +1,11 @@
+{
+  "case_number": 13,
+  "suit_name": "tg_len_64_192_step16_p192_t1_c2",
+  "model": "qwen3_06b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970016_raw.txt -t 1 -c 2 -p 192 -n 112 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 46.449203968048096
+  }
+}

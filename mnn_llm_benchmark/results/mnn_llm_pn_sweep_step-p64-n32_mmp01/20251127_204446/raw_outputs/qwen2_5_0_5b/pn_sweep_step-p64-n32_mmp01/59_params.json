@@ -1,0 +1,11 @@
+{
+  "case_number": 59,
+  "suit_name": "pn_sweep_step-p64-n32_mmp01",
+  "model": "qwen2_5_0_5b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/Qwen2.5-0.5B/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen2_5_0_5b_1764250861_raw.txt -p 960 -n 96",
+    "return_code": 0,
+    "runtime": 104.09022855758667
+  }
+}

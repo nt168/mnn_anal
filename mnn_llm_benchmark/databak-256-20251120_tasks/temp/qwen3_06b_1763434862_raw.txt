@@ -1,0 +1,4 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | llm_demo   | speed(tok/s) |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ------------ |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Low        | true | prompt=512<br>decode=128 | 73.26 ± 0.04<br>24.62 ± 0.01 |
+

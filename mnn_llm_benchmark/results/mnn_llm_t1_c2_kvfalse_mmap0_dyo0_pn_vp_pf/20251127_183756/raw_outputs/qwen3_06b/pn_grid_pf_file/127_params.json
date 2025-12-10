@@ -1,0 +1,11 @@
+{
+  "case_number": 127,
+  "suit_name": "pn_grid_pf_file",
+  "model": "qwen3_06b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1764243153_raw.txt -t 1 -c 2 -p 136 -n 40 -kv false -mmp 0 -dyo 0 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt",
+    "return_code": 0,
+    "runtime": 25.16306781768799
+  }
+}

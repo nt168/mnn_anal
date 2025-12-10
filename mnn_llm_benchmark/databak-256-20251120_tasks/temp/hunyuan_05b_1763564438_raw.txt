@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ------------- | ---------: |
+| hunyuan_05b                    | 380.67 MiB | CPU        |     1 | Low        | pp192         | 70.47 ± 0.04 |
+| hunyuan_05b                    | 380.67 MiB | CPU        |     1 | Low        | tg192         | 30.29 ± 0.01 |
+

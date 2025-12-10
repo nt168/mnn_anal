@@ -1,0 +1,11 @@
+{
+  "case_number": 14,
+  "suit_name": "precision_effect_t1",
+  "model": "qwen3_06b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763537647_raw.txt -t 1 -c 2 -p 128 -n 64 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 22.217393398284912
+  }
+}

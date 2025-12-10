@@ -1,0 +1,11 @@
+{
+  "case_number": 111,
+  "suit_name": "pn_sweep_step-n64-p32",
+  "model": "smolvlm2_256m",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/SmolVLM2-256M/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/smolvlm2_256m_1764564846_raw.txt -p 768 -n 96",
+    "return_code": 0,
+    "runtime": 45.646535873413086
+  }
+}

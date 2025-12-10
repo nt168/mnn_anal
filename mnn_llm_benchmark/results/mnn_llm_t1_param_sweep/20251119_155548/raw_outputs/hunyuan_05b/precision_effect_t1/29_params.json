@@ -1,0 +1,11 @@
+{
+  "case_number": 29,
+  "suit_name": "precision_effect_t1",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763541466_raw.txt -t 1 -c 1 -p 512 -n 128 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 92.30301976203918
+  }
+}

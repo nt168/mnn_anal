@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ------------- | ---------: |
+| SmolVLM2-256M                  | 143.10 MiB | CPU        |     4 | Low        | true | fix        | pp640         | 166.79 ± 0.45 |
+| SmolVLM2-256M                  | 143.10 MiB | CPU        |     4 | Low        | true | fix        | tg96          | 42.75 ± 0.02 |
+

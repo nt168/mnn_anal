@@ -1,0 +1,4 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | pType      | llm_demo   | speed(tok/s) |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ---------- | ------------ |
+| Llama-3.2-1B                   | 662.91 MiB | CPU        |     6 | Low        | true | fix        | prompt=400<br>decode=48 | 202.92 ± 0.25<br>29.85 ± 0.01 |
+

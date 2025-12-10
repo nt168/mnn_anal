@@ -1,0 +1,4 @@
+| model                          |  modelSize | backend    | threads | precision  | llm_demo   | speed(tok/s) |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---------- | ------------ |
+| hunyuan_05b                    | 380.67 MiB | CPU        |     1 | Normal     | prompt=128<br>decode=64 | 67.90 ± 0.03<br>23.21 ± 0.01 |
+

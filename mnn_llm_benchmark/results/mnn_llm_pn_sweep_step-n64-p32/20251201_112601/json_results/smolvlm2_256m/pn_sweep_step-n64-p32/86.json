@@ -1,0 +1,50 @@
+{
+  "bench_id": "smolvlm2_256m_1764564008",
+  "timestamp": "2025-12-01 12:40:31",
+  "model": {
+    "alias": "smolvlm2_256m",
+    "name": "SmolVLM2-256M",
+    "config_path": "/home/phyer/mnn-tst/models/SmolVLM2-256M/config.json",
+    "size_mb": "143.10 MiB"
+  },
+  "execution": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/SmolVLM2-256M/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/smolvlm2_256m_1764564008_raw.txt -p 384 -n 64",
+    "timeout_seconds": 600,
+    "runtime_seconds": 22.951,
+    "return_code": 0,
+    "success": true
+  },
+  "bench_parameters": {
+    "threads": "uses_default",
+    "precision": "uses_default",
+    "n_prompt": 384,
+    "n_gen": 64,
+    "prompt_gen": "uses_default",
+    "n_repeat": "uses_default",
+    "kv_cache": "uses_default",
+    "mmap": "uses_default",
+    "dynamicOption": "uses_default"
+  },
+  "results": {
+    "prefill": {
+      "test_name": "pp384",
+      "tokens_per_sec": {
+        "mean": 201.67,
+        "std": 0.33,
+        "formatted": "201.67 ± 0.33"
+      }
+    },
+    "decode": {
+      "test_name": "tg64",
+      "tokens_per_sec": {
+        "mean": 42.65,
+        "std": 0.03,
+        "formatted": "42.65 ± 0.03"
+      }
+    }
+  },
+  "system_info": {
+    "backend": "CPU",
+    "hostname": "phyer"
+  }
+}

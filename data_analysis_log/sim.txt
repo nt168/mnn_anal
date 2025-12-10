@@ -1,0 +1,123 @@
+********************************************************************** model_0_6B_Qwen: 2+3=?
+main, 252, cost time: 3813.580078 ms
+############################
+prompt tokens num = 18
+decode tokens num = 146
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.43 s
+decode time  = 6.79 s
+sample time  = 3.84 s
+prefill speed = 42.09 tok/s
+decode speed  = 21.51 tok/s
+********************************************************************** model_0_6B_Qwen: “春眠不觉晓”下一句？
+main, 252, cost time: 3879.174072 ms
+############################
+prompt tokens num = 23
+decode tokens num = 211
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.53 s
+decode time  = 10.00 s
+sample time  = 0.99 s
+prefill speed = 43.57 tok/s
+decode speed  = 21.09 tok/s
+********************************************************************** model_0_6B_Qwen: 中国首都是哪？
+main, 252, cost time: 3800.691895 ms
+############################
+prompt tokens num = 18
+decode tokens num = 138
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.43 s
+decode time  = 6.48 s
+sample time  = 0.65 s
+prefill speed = 42.05 tok/s
+decode speed  = 21.29 tok/s
+********************************************************************** model_0_6B_Qwen: 人民币符号？
+main, 252, cost time: 3806.754883 ms
+############################
+prompt tokens num = 16
+decode tokens num = 251
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.36 s
+decode time  = 11.92 s
+sample time  = 1.17 s
+prefill speed = 44.13 tok/s
+decode speed  = 21.05 tok/s
+********************************************************************** model_0_6B_Qwen: 光速是多少？
+main, 252, cost time: 3924.791992 ms
+############################
+prompt tokens num = 17
+decode tokens num = 311
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.39 s
+decode time  = 15.00 s
+sample time  = 1.45 s
+prefill speed = 43.06 tok/s
+decode speed  = 20.74 tok/s
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********************************************************************** model_0_5B_Hunyuan: 2+3=?
+main, 252, cost time: 4249.262207 ms
+############################
+prompt tokens num = 8
+decode tokens num = 88
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.16 s
+decode time  = 3.03 s
+sample time  = 0.29 s
+prefill speed = 50.50 tok/s
+decode speed  = 29.09 tok/s
+********************************************************************** model_0_5B_Hunyuan: “春眠不觉晓”下一句？
+main, 252, cost time: 5326.788086 ms
+############################
+prompt tokens num = 12
+decode tokens num = 252
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.26 s
+decode time  = 10.59 s
+sample time  = 0.99 s
+prefill speed = 46.23 tok/s
+decode speed  = 23.81 tok/s
+********************************************************************** model_0_5B_Hunyuan: 中国首都是哪？
+main, 252, cost time: 4241.076172 ms
+############################
+prompt tokens num = 7
+decode tokens num = 185
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.18 s
+decode time  = 6.48 s
+sample time  = 0.60 s
+prefill speed = 38.77 tok/s
+decode speed  = 28.55 tok/s
+********************************************************************** model_0_5B_Hunyuan: 人民币符号？
+main, 252, cost time: 5676.929199 ms
+############################
+prompt tokens num = 6
+decode tokens num = 512
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.20 s
+decode time  = 23.05 s
+sample time  = 2.00 s
+prefill speed = 39.16 tok/s
+decode speed  = 22.22 tok/s
+********************************************************************** model_0_5B_Hunyuan: 光速是多少？
+main, 252, cost time: 5381.476074 ms
+############################
+prompt tokens num = 6
+decode tokens num = 512
+vision time = 0.00 s
+audio time  = 0.00 s
+prefill time = 0.20 s
+decode time  = 22.81 s
+sample time  = 2.00 s
+prefill speed = 30.58 tok/s
+decode speed  = 22.44 tok/s
+
+

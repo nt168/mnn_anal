@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---------- | ------------- | ---------: |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Low        | fix        | pp144         | 66.67 ± 0.03 |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Low        | fix        | tg40          | 27.80 ± 0.02 |
+

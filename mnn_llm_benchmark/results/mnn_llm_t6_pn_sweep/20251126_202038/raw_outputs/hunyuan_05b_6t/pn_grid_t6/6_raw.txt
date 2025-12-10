@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---------- | ------------- | ---------: |
+| hunyuan_05b-6t                 | 380.67 MiB | CPU        |     4 | Low        | fix        | pp512         | 230.58 ± 0.26 |
+| hunyuan_05b-6t                 | 380.67 MiB | CPU        |     4 | Low        | fix        | tg128         | 45.69 ± 0.18 |
+

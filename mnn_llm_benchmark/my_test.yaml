@@ -1,0 +1,82 @@
+task_name: "mnn_llm_default_bench_suite"
+description: "覆盖线程数、精度、序列长度、KV缓存、mmap、动态优化的基础测试集合，排除明显无意义的参数组合"
+output_dir: "results/mnn_llm_default_suite"
+
+global_config:
+  timeout: 600          # 单条用例最大 600s，按你模型大小自行调
+  repeat: 3             # 对应 -rep，重复次数，保证统计稳定
+  models: ["qwen3_06b"] # 替换成你自己在 config/models.toml 里配置的模型别名
+
+benchmark_suits:
+  # 1) 线程数 & 精度：只扫 Normal + Low，避免 High 大规模测试特别慢
+  - suit_name: "threads_vs_precision"
+    description: "线程数与精度对吞吐性能的影响（中等序列长度）"
+    variables:
+      - name: "threads"
+        values: [1, 2, 4, 8]    # 不超过 8，避免超过多数机器物理核（>8 通常不会再线性提升）
+      - name: "precision"
+        values: [0, 2]          # 0=Normal, 2=Low；排除 1=High，节省时间
+    fixed_params:
+      n_prompt: 512             # -p 预填充长度，接近常见对话场景
+      n_gen: 128                # -n 生成长度
+      kv_cache: "true"          # -kv，应用场景为主
+      mmap: "1"                 # -mmp 开 mmap，适配大模型
+      dynamicOption: 2          # -dyo，用一个中档优化级别即可
+
+  # 2) 序列长度扩展性：只变 p/n，其它参数固定，避免维度爆炸
+  - suit_name: "seq_length_scaling"
+    description: "在典型推理场景下的序列长度扩展性（保持线程数/精度等参数稳定）"
+    variables:
+      - name: "n_prompt"
+        values: [128, 512, 1024]  # 小、中、大 三档
+      - name: "n_gen"
+        values: [64, 128, 256]    # 小、中、大 三档
+    fixed_params:
+      threads: 4
+      precision: 2                # Low 精度，吞吐更好
+      kv_cache: "true"
+      mmap: "1"
+      dynamicOption: 2
+
+  # 3) KV cache 开关：只测 kv_cache 本身，不再叠加其它变化避免难以分析
+  - suit_name: "kv_cache_effect"
+    description: "KV cache 开关对性能的影响（其它条件固定）"
+    variables:
+      - name: "kv_cache"
+        values: ["false", "true"]   # 对应 -kv false / true
+    fixed_params:
+      threads: 4
+      precision: 2
+      n_prompt: 512
+      n_gen: 128
+      mmap: "1"
+      dynamicOption: 2
+
+  # 4) mmap + dynamicOption：在较大序列下看加载策略和动态优化的收益
+  - suit_name: "mmap_and_dynamic_opt"
+    description: "mmap 与 dynamicOption 对大序列推理的影响（中等线程数，低精度）"
+    variables:
+      - name: "mmap"
+        values: ["0", "1"]      # -mmp 0/1
+      - name: "dynamicOption"
+        values: [0, 2, 4]      # 不扫 0-8 全范围，取几档代表值，避免组合爆炸
+    fixed_params:
+      threads: 4
+      precision: 2
+      n_prompt: 1024           # 较大 prompt
+      n_gen: 256               # 较长 decode
+      kv_cache: "true"
+
+  # 5) 高精度 sanity：只做小规模验证，不和大序列/高线程组合，避免“只慢不出结论”的无意义测试
+  - suit_name: "high_precision_sanity"
+    description: "高精度模式下的小规模 sanity 检查（功能/稳定性验证，不做大规模性能对比）"
+    variables:
+      - name: "precision"
+        values: [0, 1, 2]      # 一次性对比三种精度
+    fixed_params:
+      threads: 2               # 中等线程数，避免过多调度噪音
+      n_prompt: 128
+      n_gen: 64
+      kv_cache: "true"
+      mmap: "1"
+      dynamicOption: 1

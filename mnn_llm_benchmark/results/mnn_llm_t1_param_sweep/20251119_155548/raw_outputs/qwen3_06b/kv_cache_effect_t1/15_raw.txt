@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ------------- | ---------: |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Normal     | pp512         | 72.75 ± 0.07 |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Normal     | tg128         | 29.35 ± 0.02 |
+

@@ -1,0 +1,70 @@
+task_name: "mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf"
+description: >
+  固定 -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -rep 3，
+  在 p∈[96..168], n∈[32..64] 下，分别测试：
+  1) -vp 0；2) -vp 1；3) 使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt。
+taskset: "taskset -c 1"
+
+output_dir: "results/mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf"
+
+global_config:
+  timeout: 600                # 每个用例最大运行时间
+  repeat: 3                   # -rep 3 固定
+  models: ["qwen3_06b","hunyuan_05b"]
+
+benchmark_suits:
+  # --- 情况 1: 使用 -vp 0 ---
+  - suit_name: "pn_grid_vp0"
+    description: >
+      -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -vp 0，
+      扫描 p/n 网格，使用内部固定 prompt 模式 0。
+    variables:
+      - name: "n_prompt"      # 对应 -p
+        values: [96, 104, 112, 120, 128, 136, 144, 152, 160, 168]
+      - name: "n_gen"         # 对应 -n
+        values: [32, 40, 48, 56, 64]
+    fixed_params:
+      threads: 1              # -t
+      precision: 2            # -c
+      kv_cache: "false"       # -kv
+      mmap: "0"               # -mmp
+      dynamicOption: 0        # -dyo
+      vp: 0                   # -vp 0
+
+  # --- 情况 2: 使用 -vp 1 ---
+  - suit_name: "pn_grid_vp1"
+    description: >
+      -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -vp 1，
+      扫描同样的 p/n 网格，使用内部固定 prompt 模式 1。
+    variables:
+      - name: "n_prompt"
+        values: [96, 104, 112, 120, 128, 136, 144, 152, 160, 168]
+      - name: "n_gen"
+        values: [32, 40, 48, 56, 64]
+    fixed_params:
+      threads: 1
+      precision: 2
+      kv_cache: "false"
+      mmap: "0"
+      dynamicOption: 0
+      vp: 1                   # -vp 1
+
+  # --- 情况 3: 使用 -pf 指定 prompt 文件 ---
+  - suit_name: "pn_grid_pf_file"
+    description: >
+      -t 1, -c 2, -kv false, -mmp 0, -dyo 0，
+      使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt，
+      扫描同样的 p/n 网格。
+    variables:
+      - name: "n_prompt"
+        values: [96, 104, 112, 120, 128, 136, 144, 152, 160, 168]
+      - name: "n_gen"
+        values: [32, 40, 48, 56, 64]
+    fixed_params:
+      threads: 1
+      precision: 2
+      kv_cache: "false"
+      mmap: "0"
+      dynamicOption: 0
+      prompt_file: "/home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt"  # 对应 -pf
+

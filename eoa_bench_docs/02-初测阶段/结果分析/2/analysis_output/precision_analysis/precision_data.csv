@@ -1,0 +1,13 @@
+model_name,base_parameters,result_type,result_parameter,mean_value,std_value,cv_value,precision_value,precision_desc
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 0}",pp,512,54.19,0.03,0.05536076766931168,0,Normal
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 1}",pp,512,54.2,0.04,0.07380073800738007,1,High
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 2}",pp,512,62.23,0.02,0.032138839787883657,2,Low
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 0}",tg,128,25.03,0.0,0.0,0,Normal
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 1}",tg,128,24.93,0.01,0.04011231448054553,1,High
+hunyuan_05b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 2}",tg,128,30.71,0.01,0.0325626831650928,2,Low
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 0}",pp,512,49.64,0.02,0.040290088638195005,0,Normal
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 1}",pp,512,49.25,0.05,0.10152284263959391,1,High
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 2}",pp,512,57.13,0.02,0.035007876772273766,2,Low
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 0}",tg,128,22.21,0.01,0.04502476361999099,0,Normal
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 1}",tg,128,22.2,0.01,0.04504504504504504,1,High
+qwen3_06b,"{""threads"": 1, ""dynamicOption"": 0, ""kv_cache"": ""false"", ""mmap"": ""0"", ""n_prompt"": 512, ""n_gen"": 128, ""precision"": 2}",tg,128,27.28,0.01,0.036656891495601175,2,Low

@@ -1,0 +1,4 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | pType      | llm_demo   | speed(tok/s) |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ---------- | ------------ |
+| Qwen2.5-0.5B                   | 265.09 MiB | CPU        |     6 | Low        | true | fix        | prompt=400<br>decode=32 | 457.61 ± 0.76<br>60.45 ± 0.26 |
+

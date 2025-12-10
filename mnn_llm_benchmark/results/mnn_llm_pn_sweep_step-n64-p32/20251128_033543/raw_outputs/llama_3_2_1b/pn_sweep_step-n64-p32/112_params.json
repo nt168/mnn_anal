@@ -1,0 +1,11 @@
+{
+  "case_number": 112,
+  "suit_name": "pn_sweep_step-n64-p32",
+  "model": "llama_3_2_1b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/Llama-3.2-1B/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/llama_3_2_1b_1764281121_raw.txt -p 768 -n 128",
+    "return_code": 0,
+    "runtime": 188.46871709823608
+  }
+}

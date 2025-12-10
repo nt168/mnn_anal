@@ -1,0 +1,169 @@
+task_name: "阶段2：兼容性验证"
+description: "验证提示词模式在不同模型和特殊场景下的兼容性"
+output_dir: "results/stage2_compatibility_verification"
+
+global_config:
+  timeout: 3600
+  models: [qwen3_0_6b, qwen3_1_8b, qwen3_vl_2b]
+
+benchmark_suits:
+# 多模型兼容性主测试套件
+- suit_name: "multi_model_compatibility_test"
+  description: "不同模型对提示词模式的兼容性验证"
+
+  variables:
+  # 多种模型配置
+  - name: variable_prompt
+    values: [0, 1]
+    description: "0：固定模式，1：可变模式"
+
+  - name: "use_file_mode"
+    values: [true, false]
+    description: "true：文件模式，false：常规模式"
+
+  - name: "model_size_test"
+    values: ["small", "medium", "vl"]
+    description: "模型大小类别：小型、中型、VL模型"
+
+  fixed_params:
+    threads: 4
+    precision: 1               # Normal精度确保兼容性测试稳定性
+    n_prompt: 128             # 标准配置
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 20              # 20次重复确保兼容性验证可靠性
+
+# 标准模型兼容性验证
+- suit_name: "standard_model_compatibility"
+  description: "标准LLM模型（0.6B、1.8B）的提示词模式兼容性"
+
+  variables:
+  # 标准模型测试
+  - name: variable_prompt
+    values: [0, 1]
+    description: "标准模型模式测试"
+
+  - name: "model_specific_test"
+    values: ["qwen3_0_6b", "qwen3_1_8b"]
+    description: "具体模型型号"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 15              # 适中重复数兼顾效率和可靠性
+
+# VL模型专门处理验证
+- suit_name: "vl_model_special_handling"
+  description: "VL模型（视觉语言模型）的特殊模式需求验证"
+
+  variables:
+  # VL模型模式测试
+  - name: variable_prompt
+    values: [0, 1]
+    description: "VL模型模式兼容性"
+
+  # VL模型特定配置
+  - name: "vl_model_test_mode"
+    values: ["fixed_mode", "file_mode", "hybrid_mode"]
+    description: "VL模型测试模式：固定模式、文件模式、混合模式"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 12              # VL模型测试适中重复
+    prompt_file: "standard_test_prompt.txt"  # VL模型专用文件
+
+# 模式适配性验证
+- suit_name: "mode_adaptability_test"
+  description: "不同模型对各模式的适应性评估"
+
+  variables:
+  # 根据模型特性选择最佳模式
+  - name: variable_prompt
+    values: [0, 1]
+    description: "模式适应性测试"
+
+  # 模型特征分类
+  - name: "model_characteristics"
+    values: ["standard_llm", "large_llm", "visual_llm"]
+    description: "模型特征类别"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 18              # 确保适配性测试统计效力
+
+# 工程实用性验证
+- suit_name: "engineering_practicality_test"
+  description: "各模式的工程实施复杂度和效果评估"
+
+  variables:
+  # 实用性场景测试
+  - name: variable_prompt
+    values: [0, 1]
+    description: "工程实用性验证"
+
+  # 应用场景模拟
+  - name: "application_scenario"
+    values: ["benchmark_test", "performance_comparison", "regression_test"]
+    description: "应用场景：基准测试、性能对比、回归测试"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 10              # 实用性测试适中重复
+
+# 特殊场景应急方案验证
+- suit_name: "special_scenario_emergency_test"
+  description: "特殊场景下的应急处理方案验证"
+
+  variables:
+  # 应急场景模式
+  - name: variable_prompt
+    values: [0, 1]
+    description: "应急模式验证"
+
+  # 特殊情况模拟
+  - name: "emergency_scenario"
+    values: ["model_crash", "performance_degrade", "format_incompatible"]
+    description: "应急场景：模型崩溃、性能降级、格式不兼容"
+
+  fixed_params:
+    threads: 4
+    precision: 1
+    n_prompt: 128
+    n_generate: 64
+    kv_cache: "false"
+    n_repeat: 8               # 应急测试减少重复
+
+# 配置说明：
+# 1. 测试目标：验证提示词模式在不同模型和特殊场景下的兼容性
+# 2. 验证维度：
+#    - 多模型兼容性（标准LLM + VL模型）
+#    - 模式适应性（各模式对不同模型的适用程度）
+#    - 工程实用性（配置复杂度和维护成本）
+#    - 特殊场景处理（异常情况的解决方案）
+# 3. 关键指标：
+#    - 兼容性得分 ≥ 80%
+#    - 跨模型相关性 ≥ 0.9
+#    - 特殊场景解决成功率 ≥ 95%
+# 4. 测试策略：
+#    - 覆盖全系列模型和场景
+#    - 重点验证VL模型文件模式的等效性
+#    - 评估不同模式的工程价值
+# 5. 预期结果：
+#    - 标准模型兼容固定16模式
+#    - VL模型需要文件模式
+#    - 各模式明确的适用场景指南

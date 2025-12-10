@@ -1,0 +1,170 @@
+{
+  "task_info": {
+    "name": "mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf",
+    "description": "固定 -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -rep 3， 在 p∈[96..168], n∈[32..64] 下，分别测试： 1) -vp 0；2) -vp 1；3) 使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt。\n",
+    "execution_time": 7609.6631100177765,
+    "timestamp": "2025-11-27T20:44:46.508934",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 300,
+    "successful_cases": 300,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "pn_grid_vp0": {
+      "total": 100,
+      "success": 100,
+      "failed": 0
+    },
+    "pn_grid_vp1": {
+      "total": 100,
+      "success": 100,
+      "failed": 0
+    },
+    "pn_grid_pf_file": {
+      "total": 100,
+      "success": 100,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "qwen3_06b",
+    "hunyuan_05b"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf",
+    "description": "固定 -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -rep 3， 在 p∈[96..168], n∈[32..64] 下，分别测试： 1) -vp 0；2) -vp 1；3) 使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt。\n",
+    "taskset": "taskset -c 1",
+    "output_dir": "results/mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf",
+    "global_config": {
+      "timeout": 600,
+      "repeat": 3,
+      "models": [
+        "qwen3_06b",
+        "hunyuan_05b"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_grid_vp0",
+        "description": "-t 1, -c 2, -kv false, -mmp 0, -dyo 0, -vp 0， 扫描 p/n 网格，使用内部固定 prompt 模式 0。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              96,
+              104,
+              112,
+              120,
+              128,
+              136,
+              144,
+              152,
+              160,
+              168
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0,
+          "vp": 0
+        }
+      },
+      {
+        "suit_name": "pn_grid_vp1",
+        "description": "-t 1, -c 2, -kv false, -mmp 0, -dyo 0, -vp 1， 扫描同样的 p/n 网格，使用内部固定 prompt 模式 1。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              96,
+              104,
+              112,
+              120,
+              128,
+              136,
+              144,
+              152,
+              160,
+              168
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0,
+          "vp": 1
+        }
+      },
+      {
+        "suit_name": "pn_grid_pf_file",
+        "description": "-t 1, -c 2, -kv false, -mmp 0, -dyo 0， 使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt， 扫描同样的 p/n 网格。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              96,
+              104,
+              112,
+              120,
+              128,
+              136,
+              144,
+              152,
+              160,
+              168
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0,
+          "prompt_file": "/home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt"
+        }
+      }
+    ]
+  }
+}

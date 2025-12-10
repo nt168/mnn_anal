@@ -1,0 +1,32 @@
+task_name: "mnn_llm_rep_sweep_t1"
+description: >
+  单线程 t=1 下扫描 rep 对性能的影响。
+  固定参数：t=1, c=2, mmp=0, dyo=0, vp=1, kv=true。
+  变量：rep ∈ {2,3,4,5}，p ∈ {192,384,512}，n=64。
+taskset: "taskset -c 3"
+
+output_dir: "results/mnn_llm_rep_sweep_t1"
+
+global_config:
+  threads: 1          # -t 1
+  precision: 2        # -c 2
+  mmap: "0"           # -mmp 0
+  dynamicOption: 0    # -dyo 0
+  vp: 1               # -vp 1
+  kv_cache: "true"    # -kv true
+  timeout: 600
+  models: ["hunyuan_05b_1t"]
+
+benchmark_suits:
+  - suit_name: "rep_p_grid_t1"
+    description: >
+      扫描 rep ∈ {2,3,4,5} 与 p ∈ {192,384,512}，
+      n 固定为 64，观察重复次数对稳定性的影响。
+    variables:
+      - name: "repeat"      # 映射到 -rep
+        values: [2, 3, 4, 5]
+      - name: "n_prompt"    # 映射到 -p
+        values: [192, 384, 512]
+      - name: "n_gen"       # 映射到 -n
+        values: [64]
+    fixed_params: {}

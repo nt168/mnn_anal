@@ -1,0 +1,11 @@
+{
+  "case_number": 27,
+  "suit_name": "mmap_effect_t1",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763545338_raw.txt -t 1 -c 0 -p 128 -n 64 -kv false -mmp 1 -dyo 0",
+    "return_code": 0,
+    "runtime": 28.46027183532715
+  }
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNN LLM Bench 基准测试结果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>MNN LLM Bench</h1>
+            <p>基准测试结果可视化平台</p>
+        </header>
+
+        <div class="content">
+            {% if tasks|length > 0 %}
+                <!-- 统计信息 -->
+                <div class="stats-bar">
+                    <div class="stats-info">
+                        共 <strong>{{ total_tasks }}</strong> 个任务，
+                        <strong>{{ total_cases() if total_cases is defined else tasks|sum(attribute='total_cases') }}</strong> 个测试用例
+                    </div>
+                    <div class="stats-info">
+                        第 {{ page }} 页，共 {{ total_pages }} 页，每页显示 {{ per_page }} 个
+                    </div>
+                </div>
+
+                <!-- 页面控制栏 -->
+                <div class="page-controls">
+                    <!-- 顶部翻页按钮 -->
+                    {% if total_pages > 1 %}
+                    <div class="pagination-top">
+                        {% if has_prev %}
+                            <a href="{{ url_for('index', page=page-1, per_page=per_page) }}">⬅ 上一页</a>
+                        {% else %}
+                            <span class="disabled">⬅ 上一页</span>
+                        {% endif %}
+
+                        <!-- 页码显示 -->
+                        {% set start_page = [1, page - 2]|max %}
+                        {% set end_page = [total_pages, page + 2]|min %}
+
+                        {% if start_page > 1 %}
+                            <a href="{{ url_for('index', page=1, per_page=per_page) }}">1</a>
+                            {% if start_page > 2 %}<span>...</span>{% endif %}
+                        {% endif %}
+
+                        {% for p in range(start_page, end_page + 1) %}
+                            {% if p == page %}
+                                <span class="current">{{ p }}</span>
+                            {% else %}
+                                <a href="{{ url_for('index', page=p, per_page=per_page) }}">{{ p }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if end_page < total_pages %}
+                            {% if end_page < total_pages - 1 %}<span>...</span>{% endif %}
+                            <a href="{{ url_for('index', page=total_pages, per_page=per_page) }}">{{ total_pages }}</a>
+                        {% endif %}
+
+                        {% if has_next %}
+                            <a href="{{ url_for('index', page=page+1, per_page=per_page) }}">下一页 ➡</a>
+                        {% else %}
+                            <span class="disabled">下一页 ➡</span>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <!-- 如果没有分页，用一个占位器保持布局 -->
+                    <div class="pagination-top">
+                        <span style="color: #999; font-size: 0.9rem;">暂无分页</span>
+                    </div>
+                    {% endif %}
+
+                    <!-- 每页任务数控制 -->
+                    <div class="per-page-controls">
+                        <label>每页任务数:</label>
+                        <input type="number" id="perPageInput" value="{{ per_page }}" min="5" max="100">
+                        <button onclick="setPerPage()">设置</button>
+                    </div>
+                </div>
+
+                <!-- 任务列表 -->
+                {% for task in tasks %}
+                    <div class="task-section">
+                        <div class="task-header">
+                            <div>
+                                <div class="task-title-row">
+                                    <h3 class="task-title">
+                                        <span class="task-original-name">{{ task.original_name or task.name }}</span>
+                                        {% if task.run_number and task.run_number > 1 %}
+                                        <span class="task-run-number">{{ task.run_number }}</span>
+                                        {% endif %}
+                                    </h3>
+                                </div>
+                                <div class="task-meta">
+                                    更新时间: {{ task.updated_at }}
+                                    | {{ task.suite_count }} 个套件
+                                    | {{ task.total_cases }} 个总用例
+                                </div>
+                            </div>
+                            <div class="task-status status-{{ task.status }}">{{ task.status|upper }}</div>
+                        </div>
+
+                        {% if task.suites|length > 0 %}
+                            <div class="suite-grid">
+                                {% for suite in task.suites %}
+                                    <a href="/suite/{{ suite.id }}" class="suite-card">
+                                        <div class="suite-description">{{ suite.description }}</div>
+                                        <div class="suite-name">{{ suite.name }}</div>
+                                        <div class="suite-model">模型: {{ suite.model_name }}</div>
+                                        <div class="suite-time">{{ suite.created_at }}</div>
+                                        {% if suite.case_count > 0 %}
+                                            <div class="suite-info">
+                                                <div class="result-count">包含 {{ suite.case_count }} 个测试用例</div>
+                                                <div class="suite-id">ID:#{{ suite.id }}</div>
+                                            </div>
+                                        {% else %}
+                                            <div class="result-count">
+                                                测试计划，尚未执行用例
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state" style="margin: 20px;">
+                                <div>该任务下暂无测试套件</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <!-- 底部页面控制栏 -->
+                <div class="page-controls">
+                    {% if total_pages > 1 %}
+                    <!-- 底部翻页按钮 -->
+                    <div class="pagination">
+                        {% if has_prev %}
+                            <a href="{{ url_for('index', page=page-1, per_page=per_page) }}">⬅ 上一页</a>
+                        {% else %}
+                            <span class="disabled">⬅ 上一页</span>
+                        {% endif %}
+
+                        <!-- 页码显示 -->
+                        {% set start_page = [1, page - 2]|max %}
+                        {% set end_page = [total_pages, page + 2]|min %}
+
+                        {% if start_page > 1 %}
+                            <a href="{{ url_for('index', page=1, per_page=per_page) }}">1</a>
+                            {% if start_page > 2 %}<span>...</span>{% endif %}
+                        {% endif %}
+
+                        {% for p in range(start_page, end_page + 1) %}
+                            {% if p == page %}
+                                <span class="current">{{ p }}</span>
+                            {% else %}
+                                <a href="{{ url_for('index', page=p, per_page=per_page) }}">{{ p }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if end_page < total_pages %}
+                            {% if end_page < total_pages - 1 %}<span>...</span>{% endif %}
+                            <a href="{{ url_for('index', page=total_pages, per_page=per_page) }}">{{ total_pages }}</a>
+                        {% endif %}
+
+                        {% if has_next %}
+                            <a href="{{ url_for('index', page=page+1, per_page=per_page) }}">下一页 ➡</a>
+                        {% else %}
+                            <span class="disabled">下一页 ➡</span>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <!-- 如果没有分页，用占位器保持续一致性 -->
+                    <div class="pagination">
+                        <span style="color: #999; font-size: 0.9rem;">暂无分页</span>
+                    </div>
+                    {% endif %}
+
+                    <!-- 底部每页任务数控制 -->
+                    <div class="per-page-controls">
+                        <label>每页任务数:</label>
+                        <input type="number" id="perPageInputBottom" value="{{ per_page }}" min="5" max="100">
+                        <button onclick="setPerPage()">设置</button>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">数据分析</div>
+                    <h3>暂无测试任务</h3>
+                    <p>请先运行基准测试生成数据</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function setPerPage() {
+            // 从顶部或底部输入框获取值，优先使用非空值
+            const topInput = document.getElementById('perPageInput');
+            const bottomInput = document.getElementById('perPageInputBottom');
+
+            let perPage;
+            if (topInput && topInput.value) {
+                perPage = parseInt(topInput.value);
+            } else if (bottomInput && bottomInput.value) {
+                perPage = parseInt(bottomInput.value);
+            } else {
+                perPage = {{ per_page }}; // 使用模板变量的默认值
+            }
+
+            // 验证输入值的合法性
+            if (isNaN(perPage) || perPage < 5 || perPage > 100) {
+                alert('每页任务数必须在5到100之间');
+                // 恢复两个输入框的值
+                if (topInput) topInput.value = '{{ per_page }}';
+                if (bottomInput) bottomInput.value = '{{ per_page }}';
+                return;
+            }
+
+            // 构建当前页面的基础URL
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('per_page', perPage);
+
+            // 如果设置了每页数，通常重置到第1页更合理
+            currentUrl.searchParams.set('page', 1);
+
+            // 跳转到新页面
+            window.location.href = currentUrl.href;
+        }
+
+        // 允许按Enter键触发设置（为两个输入框都添加事件）
+        function addEnterListener(inputId) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        setPerPage();
+                    }
+                });
+
+                // 同步更新另一个输入框
+                input.addEventListener('input', function(e) {
+                    const value = e.target.value;
+                    const otherId = inputId === 'perPageInput' ? 'perPageInputBottom' : 'perPageInput';
+                    const otherInput = document.getElementById(otherId);
+                    if (otherInput) {
+                        otherInput.value = value;
+                    }
+                });
+            }
+        }
+
+        // 页面加载完成后添加监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            addEnterListener('perPageInput');
+            addEnterListener('perPageInputBottom');
+        });
+    </script>
+</body>
+</html>

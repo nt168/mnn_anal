@@ -1,0 +1,50 @@
+{
+  "bench_id": "qwen3_06b_1763608030",
+  "timestamp": "2025-11-20 11:09:19",
+  "model": {
+    "alias": "qwen3_06b",
+    "name": "qwen3_06b",
+    "config_path": "/home/phyer/mnn-tst/models/qwen3_06b/config.json",
+    "size_mb": "429.93 MiB"
+  },
+  "execution": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763608030_raw.txt -t 1 -c 2 -p 768 -n 160 -kv false -mmp 0 -dyo 0",
+    "timeout_seconds": 600,
+    "runtime_seconds": 129.046,
+    "return_code": 0,
+    "success": true
+  },
+  "bench_parameters": {
+    "threads": 1,
+    "precision": 2,
+    "n_prompt": 768,
+    "n_gen": 160,
+    "prompt_gen": "uses_default",
+    "n_repeat": "uses_default",
+    "kv_cache": "false",
+    "mmap": "0",
+    "dynamicOption": 0
+  },
+  "results": {
+    "prefill": {
+      "test_name": "pp768",
+      "tokens_per_sec": {
+        "mean": 51.8,
+        "std": 0.02,
+        "formatted": "51.80 ± 0.02"
+      }
+    },
+    "decode": {
+      "test_name": "tg160",
+      "tokens_per_sec": {
+        "mean": 26.9,
+        "std": 0.0,
+        "formatted": "26.90 ± 0.00"
+      }
+    }
+  },
+  "system_info": {
+    "backend": "CPU",
+    "hostname": "phyer"
+  }
+}

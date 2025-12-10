@@ -1,0 +1,74 @@
+task_name: "阶段1：全局趋势扫描"
+description: "8-512广泛采样识别CV整体变化模式，发现关键转折区间"
+output_dir: "results/stage1_global_trend_scan"
+
+global_config:
+  timeout: 2400
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 全局趋势扫描主测试套件
+- suit_name: "comprehensive_length_scan"
+  description: "广泛采样覆盖从短到长的完整提示词长度范围，识别CV变化趋势"
+
+  variables:
+  # 广泛采样策略：小长度密布，大长度稀疏
+  - name: n_prompt
+    values: [8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 112, 128, 160, 192, 256, 384, 512]
+    description: "19个测试点：小长度密布(8-128步长8)，大长度稀疏(160-512指数增长)"
+
+  fixed_params:
+    n_repeat: 10              # 10次重复确保统计可靠性
+    n_generate: "__stage0_selected__"  # 使用阶段0确定的生成长度
+    threads: 4                 # 固定线程数保持一致性
+    precision: 1               # Normal精度
+    variable_prompt: 0         # 固定提示词模式
+    kv_cache: "false"          # 禁用KV缓存
+
+# 关键转折区间细化测试
+- suit_name: "transition_zone_refinement"
+  description: "基于初步扫描结果，对关键转折区间进行细化测试"
+
+  variables:
+  # 假设转折区间[48-128]，进行细化采样
+  - name: n_prompt
+    values: [44, 52, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132]
+    description: "转折区间细化采样，12个点密集覆盖"
+
+  fixed_params:
+    n_repeat: 10
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 趋势验证辅助测试
+- suit_name: "trend_validation_test"
+  description: "验证发现的趋势模式的重复性和稳定性"
+
+  variables:
+  # 针对疑似转折点的重点验证
+  - name: n_prompt
+    values: [32, 48, 64, 80, 96, 128, 160]
+    description: "关键转折点验证测试"
+
+  fixed_params:
+    n_repeat: 15              # 增加重复次数验证稳定性
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 配置说明：
+# 1. 测试目标：识别CV变化的完整模式和关键转折区间
+# 2. 采样策略：
+#    - 主扫描：19个点，8-128密集采样(步长8)，160-512稀疏采样
+#    - 转折区间：12个点，对疑似转折区进行细化验证
+#    - 验证测试：7个关键点，增加重复次数验证稳定性
+# 3. 分析重点：
+#    - CV变化斜率识别从快速变化到平缓的转折
+#    - 确定阶段2的测试范围[48,128]
+#    - 验证趋势的一致性和重复性
+# 4. 预期结果：明确CV变化的关键转折区间，为收敛现象探测提供范围

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNN LLM 基准测试分析报告</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        .metadata-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        .metadata-table th, .metadata-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        .metadata-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .result-table th, .result-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .result-table th {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ecf0f1;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
+        .variance-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .regression-box {
+            background-color: #d1f2eb;
+            border: 1px solid #a3e4d7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .stats-table th, .stats-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>tg_len_64_192_step16_p192_t1_c2 单变量分析报告 - 生成长度</h1>
+        <div class="header-info">
+            <p><strong>模型:</strong> qwen3_06b</p>
+            <p><strong>分析时间:</strong> </p>
+            <p>本报告对<strong>tg_len_64_192_step16_p192_t1_c2</strong>套件中变量<strong>生成长度</strong>的性能影响进行了详细分析。</p>
+        </div>
+
+        <h2>分析元数据</h2>
+        <table class="metadata-table">
+            <tr><th>属性</th><th>值</th></tr>
+            <tr><td>Suite名称</td><td>tg_len_64_192_step16_p192_t1_c2</td></tr>
+            <tr><td>模型名称</td><td>qwen3_06b</td></tr>
+            <tr><td>分析模式</td><td>单变量分析</td></tr>
+            <tr><td>目标变量</td><td>生成长度</td></tr>
+            <tr><td>固定参数</td><td>无固定参数</td></tr>
+            <tr><td>筛选案例数</td><td>9</td></tr>
+            <tr><td>总案例数</td><td>9</td></tr>
+            <tr><td>结果类型</td><td>pp, tg</td></tr>
+        </table>
+
+        <h2>方差分析</h2>
+        <div class="variance-box">
+            <h3>方差意义说明</h3>
+            <p>方差说明：
+        - 每个数据点的误差条表示多次运行结果的标准差
+        - 误差条长度反映了结果的一致性：较短表示结果更稳定
+        - 在理想情况下，相同参数配置下的多次运行结果应该有较小的方差
+        - 较大的方差可能表明系统存在不稳定的因素</p>
+        </div>
+        <div class="variance-box">
+            <h3>方差统计表</h3>
+            <table class="stats-table">
+                | 结果类型 | 数据点数 | 平均标准差 | 最大标准差 | 最小标准差 |
+|--------|--------|----------|----------|----------|
+| pp | 9 | 0.0244 | 0.0400 | 0.0100 |
+| tg | 9 | 0.2644 | 2.2500 | 0.0000 |
+            </table>
+        </div>
+<h2>分析结果</h2>
+
+        <div class="result-summary">
+            <h3>数据汇总</h3>
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>结果类型</th>
+                        <th>案例数</th>
+                        <th>平均性能</th>
+                        <th>标准差</th>
+                        <th>单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PP</td>
+                        <td>9</td>
+                        <td>69.2978</td>
+                        <td>0.0244</td>
+                        <td>tokens/sec</td>
+                    </tr>
+                    <tr>
+                        <td>TG</td>
+                        <td>9</td>
+                        <td>28.3478</td>
+                        <td>0.2644</td>
+                        <td>tokens/sec</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+<h3>PP 结果</h3>
+
+            <div class="image-container">
+                <h4>散点图</h4>
+                <img src="pp_scatter.png" alt="pp Scatter Plot">
+            </div>
+
+            <div class="image-container">
+                <h4>回归分析图</h4>
+                <img src="pp_regression.png" alt="pp Regression Plot">
+            </div>
+<h3>TG 结果</h3>
+
+            <div class="image-container">
+                <h4>散点图</h4>
+                <img src="tg_scatter.png" alt="tg Scatter Plot">
+            </div>
+
+            <div class="image-container">
+                <h4>回归分析图</h4>
+                <img src="tg_regression.png" alt="tg Regression Plot">
+            </div>
+<h2>回归分析详情</h2>
+<h3>PP 回归分析</h3>
+<div class='regression-box'>
+<table class='stats-table'>
+<tr><th>回归方程</th><td>PP 性能 = -0.0011 × 生成长度² + 0.2173 × 生成长度 + 61.7477</td></tr>
+<tr><th>R² 值</th><td>0.10033017969630542</td></tr>
+<tr><th>回归方法</th><td>quadratic</td></tr>
+</table>
+</div>
+<h3>TG 回归分析</h3>
+<div class='regression-box'>
+<table class='stats-table'>
+<tr><th>回归方程</th><td>TG 性能 = -0.0003 × 生成长度² + 0.0605 × 生成长度 + 25.6053</td></tr>
+<tr><th>R² 值</th><td>0.07808786515305277</td></tr>
+<tr><th>回归方法</th><td>quadratic</td></tr>
+</table>
+</div>
+
+        <div class="footer">
+            <p>本报告由 MNN LLM 基准测试系统生成</p>
+        </div>
+    </div>
+</body>
+</html>

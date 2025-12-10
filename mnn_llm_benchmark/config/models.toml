@@ -1,0 +1,17 @@
+# MNN LLM 模型配置文件
+# 定义模型别名到实际config.json路径的映射
+# 注意: 此文件由自动扫描工具生成和更新，也可以手动编辑
+# 别名规则: 原始目录名转换为小写，特殊字符替换为下划线，只保留字母数字下划线
+
+[model_mapping]
+model_0_6b_qwen = "/home/phyer/mnn-tst/models/model_0.6B_Qwen/config.json"
+model_0_5b_hunyuan = "/home/phyer/mnn-tst/models/model_0.5B_Hunyuan/config.json"
+qwen3_06b = "/home/phyer/mnn-tst/models/qwen3_06b/config.json"
+hunyuan_05b = "/home/phyer/mnn-tst/models/hunyuan_05b/config.json"
+hunyuan_05b_2t = "/home/phyer/mnn-tst/models/hunyuan_05b-2t/config.json"
+hunyuan_05b_6t = "/home/phyer/mnn-tst/models/hunyuan_05b-6t/config.json"
+hunyuan_05b_1t = "/home/phyer/mnn-tst/models/hunyuan_05b-1t/config.json"
+qwen2_5_0_5b = "/home/phyer/mnn-tst/models/Qwen2.5-0.5B/config.json"
+llama_3_2_1b = "/home/phyer/mnn-tst/models/Llama-3.2-1B/config.json"
+smolvlm2_256m = "/home/phyer/mnn-tst/models/SmolVLM2-256M/config.json"
+llama_3_2_3b = "/home/phyer/mnn-tst/models/Llama-3.2-3B/config.json"

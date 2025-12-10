@@ -1,0 +1,11 @@
+{
+  "case_number": 31,
+  "suit_name": "kv_cache_effect_t1",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763538100_raw.txt -t 1 -c 0 -p 128 -n 64 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 30.50068736076355
+  }
+}

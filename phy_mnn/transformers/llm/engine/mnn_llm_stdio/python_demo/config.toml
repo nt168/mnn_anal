@@ -1,0 +1,45 @@
+# MNN LLM Stdio Backend 客户端配置文件
+# 只管理客户端本身的行为参数
+
+[client]
+# 客户端连接相关配置
+default_backend_path = "~/mnn/build/mnn_llm_stdio_backend"   # 默认backend可执行文件路径
+default_model        = "~/models/Qwen3-0.6B-MNN/config.json" # 默认模型配置文件路径
+init_timeout         = 30.0                                  # 后端初始化超时时间(秒)
+init_sleep_time      = 0.1                                   # 初始化轮询间隔时间(秒)
+response_timeout     = 120.0                                 # 响应超时时间(秒)
+shutdown_timeout     = 5.0                                   # 关闭超时时间(秒)
+select_timeout       = 0.1                                   # select轮询超时时间
+
+[display]
+# 显示相关配置
+show_timing         = true                                   # 是否显示耗时信息
+show_response_length = true                                  # 是否显示响应长度
+time_precision       = 2                                     # 时间显示精度(小数位数)
+separator_length     = 50                                    # 分隔线长度
+
+[logging]
+# 日志相关配置
+log_file            = "mnn_llm_demo.log"                     # 日志文件路径
+log_level           = "INFO"                                 # 日志级别：DEBUG, INFO, WARNING, ERROR, CRITICAL
+enable_file_log     = true                                   # 是否启用文件日志
+enable_console_log  = true                                   # 是否启用控制台日志
+
+[chat]
+# 对话相关配置
+default_prompt      = "你好，请介绍一下你自己"                  # 默认单次对话提示语
+default_batch_file  = "example_commands.txt"                 # 默认批量对话文件
+show_progress       = true                                   # 是否显示进度信息
+
+[thinking]
+# 思考标签相关配置
+thinking_start_tags   = ["<thinking>", "<think>", "<reasoning>"]   # 思考开始标签列表
+thinking_end_tags     = ["</thinking>", "</think>", "</reasoning>"] # 思考结束标签列表
+enable_thinking_display = true                                   # 是否启用思考内容特殊显示
+thinking_start_indicator = "\n[思考中……\n"                      # 思考开始指示器
+thinking_end_indicator   = "]\n"                                # 思考结束指示器
+
+# 思考模式配置
+implicit_thinking = true                                         # 隐式思考模式（如Qwen3-VL）
+# true:  默认进入思考模式，直到遇到结束标签
+# false: 只在遇到开始标签时进入思考模式

@@ -1,0 +1,273 @@
+2025-11-24 15:31:57,247 - TaskRunner - INFO - 数据库管理器初始化成功
+2025-11-24 15:31:57,256 - ResultManager - INFO - 创建结果目录: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157
+2025-11-24 15:31:57,256 - ResultManager - INFO - 任务README已生成: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/README.md
+2025-11-24 15:31:57,259 - TaskRunner - INFO - 基准测试执行器创建成功
+2025-11-24 15:31:57,261 - TaskRunner - INFO - 开始执行批量任务，共 18 个测试用例 (task_id=2)
+2025-11-24 15:31:57,261 - TaskRunner - INFO - 进度: 1/18
+2025-11-24 15:31:57,261 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:31:57,262 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969517_raw.txt -t 1 -c 2 -p 192 -n 64 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:31:57,262 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:32:29,870 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 32.61秒
+2025-11-24 15:32:29,870 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:32:29,870 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:32:29,871 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/1.json
+2025-11-24 15:32:29,871 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/1_raw.txt
+2025-11-24 15:32:29,871 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/1_params.json
+2025-11-24 15:32:29,883 - TaskRunner - INFO - 实时写入case 1 成功 (case_id=257)
+2025-11-24 15:32:29,883 - TaskRunner - INFO - 进度: 2/18
+2025-11-24 15:32:29,883 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:32:29,883 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969549_raw.txt -t 1 -c 2 -p 192 -n 80 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:32:29,883 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:33:05,733 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 35.85秒
+2025-11-24 15:33:05,733 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:33:05,733 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:33:05,733 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/2.json
+2025-11-24 15:33:05,734 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/2_raw.txt
+2025-11-24 15:33:05,734 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/2_params.json
+2025-11-24 15:33:05,743 - TaskRunner - INFO - 实时写入case 2 成功 (case_id=258)
+2025-11-24 15:33:05,743 - TaskRunner - INFO - 进度: 3/18
+2025-11-24 15:33:05,743 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:33:05,743 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969585_raw.txt -t 1 -c 2 -p 192 -n 96 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:33:05,743 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:33:36,423 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 30.68秒
+2025-11-24 15:33:36,423 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:33:36,423 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:33:36,424 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/3.json
+2025-11-24 15:33:36,424 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/3_raw.txt
+2025-11-24 15:33:36,424 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/3_params.json
+2025-11-24 15:33:36,433 - TaskRunner - INFO - 实时写入case 3 成功 (case_id=259)
+2025-11-24 15:33:36,433 - TaskRunner - INFO - 进度: 4/18
+2025-11-24 15:33:36,433 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:33:36,433 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969616_raw.txt -t 1 -c 2 -p 192 -n 112 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:33:36,433 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:34:08,823 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 32.39秒
+2025-11-24 15:34:08,823 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:34:08,824 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:34:08,824 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/4.json
+2025-11-24 15:34:08,824 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/4_raw.txt
+2025-11-24 15:34:08,824 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/4_params.json
+2025-11-24 15:34:08,835 - TaskRunner - INFO - 实时写入case 4 成功 (case_id=260)
+2025-11-24 15:34:08,835 - TaskRunner - INFO - 进度: 5/18
+2025-11-24 15:34:08,835 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:34:08,835 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969648_raw.txt -t 1 -c 2 -p 192 -n 128 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:34:08,835 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:34:54,277 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 45.44秒
+2025-11-24 15:34:54,278 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:34:54,278 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:34:54,278 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/5.json
+2025-11-24 15:34:54,278 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/5_raw.txt
+2025-11-24 15:34:54,279 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/5_params.json
+2025-11-24 15:34:54,287 - TaskRunner - INFO - 实时写入case 5 成功 (case_id=261)
+2025-11-24 15:34:54,287 - TaskRunner - INFO - 进度: 6/18
+2025-11-24 15:34:54,287 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:34:54,287 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969694_raw.txt -t 1 -c 2 -p 192 -n 144 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:34:54,287 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:35:43,181 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 48.89秒
+2025-11-24 15:35:43,181 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:35:43,181 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:35:43,182 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/6.json
+2025-11-24 15:35:43,182 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/6_raw.txt
+2025-11-24 15:35:43,182 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/6_params.json
+2025-11-24 15:35:43,191 - TaskRunner - INFO - 实时写入case 6 成功 (case_id=262)
+2025-11-24 15:35:43,191 - TaskRunner - INFO - 进度: 7/18
+2025-11-24 15:35:43,191 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:35:43,191 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969743_raw.txt -t 1 -c 2 -p 192 -n 160 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:35:43,191 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:36:35,324 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 52.13秒
+2025-11-24 15:36:35,325 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:36:35,325 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:36:35,325 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/7.json
+2025-11-24 15:36:35,325 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/7_raw.txt
+2025-11-24 15:36:35,325 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/7_params.json
+2025-11-24 15:36:35,334 - TaskRunner - INFO - 实时写入case 7 成功 (case_id=263)
+2025-11-24 15:36:35,334 - TaskRunner - INFO - 进度: 8/18
+2025-11-24 15:36:35,334 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:36:35,334 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969795_raw.txt -t 1 -c 2 -p 192 -n 176 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:36:35,334 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:37:30,779 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 55.44秒
+2025-11-24 15:37:30,779 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:37:30,779 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:37:30,779 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/8.json
+2025-11-24 15:37:30,780 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/8_raw.txt
+2025-11-24 15:37:30,780 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/8_params.json
+2025-11-24 15:37:30,787 - TaskRunner - INFO - 实时写入case 8 成功 (case_id=264)
+2025-11-24 15:37:30,787 - TaskRunner - INFO - 进度: 9/18
+2025-11-24 15:37:30,787 - BenchExecutor - INFO - 开始执行基准测试: hunyuan_05b
+2025-11-24 15:37:30,787 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763969850_raw.txt -t 1 -c 2 -p 192 -n 192 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:37:30,787 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:38:29,603 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 58.82秒
+2025-11-24 15:38:29,603 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:38:29,603 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:38:29,604 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/9.json
+2025-11-24 15:38:29,604 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/9_raw.txt
+2025-11-24 15:38:29,604 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/hunyuan_05b/tg_len_64_192_step16_p192_t1_c2/9_params.json
+2025-11-24 15:38:29,622 - TaskRunner - INFO - 实时写入case 9 成功 (case_id=265)
+2025-11-24 15:38:29,622 - TaskRunner - INFO - 进度: 10/18
+2025-11-24 15:38:29,622 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:38:29,623 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763969909_raw.txt -t 1 -c 2 -p 192 -n 64 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:38:29,623 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:39:04,937 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 35.31秒
+2025-11-24 15:39:04,938 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:39:04,938 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:39:04,938 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/10.json
+2025-11-24 15:39:04,939 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/10_raw.txt
+2025-11-24 15:39:04,939 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/10_params.json
+2025-11-24 15:39:04,951 - TaskRunner - INFO - 实时写入case 10 成功 (case_id=266)
+2025-11-24 15:39:04,951 - TaskRunner - INFO - 进度: 11/18
+2025-11-24 15:39:04,951 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:39:04,951 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763969944_raw.txt -t 1 -c 2 -p 192 -n 80 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:39:04,951 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:39:44,243 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 39.29秒
+2025-11-24 15:39:44,243 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:39:44,244 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:39:44,244 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/11.json
+2025-11-24 15:39:44,244 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/11_raw.txt
+2025-11-24 15:39:44,244 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/11_params.json
+2025-11-24 15:39:44,252 - TaskRunner - INFO - 实时写入case 11 成功 (case_id=267)
+2025-11-24 15:39:44,252 - TaskRunner - INFO - 进度: 12/18
+2025-11-24 15:39:44,252 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:39:44,252 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763969984_raw.txt -t 1 -c 2 -p 192 -n 96 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:39:44,252 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:40:16,522 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 32.27秒
+2025-11-24 15:40:16,523 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:40:16,523 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:40:16,523 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/12.json
+2025-11-24 15:40:16,524 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/12_raw.txt
+2025-11-24 15:40:16,524 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/12_params.json
+2025-11-24 15:40:16,532 - TaskRunner - INFO - 实时写入case 12 成功 (case_id=268)
+2025-11-24 15:40:16,532 - TaskRunner - INFO - 进度: 13/18
+2025-11-24 15:40:16,532 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:40:16,533 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970016_raw.txt -t 1 -c 2 -p 192 -n 112 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:40:16,533 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:41:02,982 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 46.45秒
+2025-11-24 15:41:02,982 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:41:02,982 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:41:02,982 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/13.json
+2025-11-24 15:41:02,983 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/13_raw.txt
+2025-11-24 15:41:02,983 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/13_params.json
+2025-11-24 15:41:02,990 - TaskRunner - INFO - 实时写入case 13 成功 (case_id=269)
+2025-11-24 15:41:02,990 - TaskRunner - INFO - 进度: 14/18
+2025-11-24 15:41:02,990 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:41:02,990 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970062_raw.txt -t 1 -c 2 -p 192 -n 128 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:41:02,990 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:41:52,927 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 49.94秒
+2025-11-24 15:41:52,927 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:41:52,927 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:41:52,928 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/14.json
+2025-11-24 15:41:52,928 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/14_raw.txt
+2025-11-24 15:41:52,928 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/14_params.json
+2025-11-24 15:41:52,937 - TaskRunner - INFO - 实时写入case 14 成功 (case_id=270)
+2025-11-24 15:41:52,937 - TaskRunner - INFO - 进度: 15/18
+2025-11-24 15:41:52,937 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:41:52,937 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970112_raw.txt -t 1 -c 2 -p 192 -n 144 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:41:52,937 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:42:46,727 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 53.79秒
+2025-11-24 15:42:46,727 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:42:46,727 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:42:46,728 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/15.json
+2025-11-24 15:42:46,728 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/15_raw.txt
+2025-11-24 15:42:46,728 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/15_params.json
+2025-11-24 15:42:46,737 - TaskRunner - INFO - 实时写入case 15 成功 (case_id=271)
+2025-11-24 15:42:46,738 - TaskRunner - INFO - 进度: 16/18
+2025-11-24 15:42:46,738 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:42:46,738 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970166_raw.txt -t 1 -c 2 -p 192 -n 160 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:42:46,738 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:43:40,215 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 53.48秒
+2025-11-24 15:43:40,215 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:43:40,215 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:43:40,218 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/16.json
+2025-11-24 15:43:40,218 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/16_raw.txt
+2025-11-24 15:43:40,219 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/16_params.json
+2025-11-24 15:43:40,227 - TaskRunner - INFO - 实时写入case 16 成功 (case_id=272)
+2025-11-24 15:43:40,227 - TaskRunner - INFO - 进度: 17/18
+2025-11-24 15:43:40,227 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:43:40,228 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970220_raw.txt -t 1 -c 2 -p 192 -n 176 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:43:40,228 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:44:41,407 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 61.18秒
+2025-11-24 15:44:41,408 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:44:41,408 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:44:41,408 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/17.json
+2025-11-24 15:44:41,409 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/17_raw.txt
+2025-11-24 15:44:41,409 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/17_params.json
+2025-11-24 15:44:41,417 - TaskRunner - INFO - 实时写入case 17 成功 (case_id=273)
+2025-11-24 15:44:41,417 - TaskRunner - INFO - 进度: 18/18
+2025-11-24 15:44:41,417 - BenchExecutor - INFO - 开始执行基准测试: qwen3_06b
+2025-11-24 15:44:41,417 - BenchExecutor - INFO - 准备执行基准测试: /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763970281_raw.txt -t 1 -c 2 -p 192 -n 192 -kv false -mmp 0 -dyo 0 (超时: 600秒)
+2025-11-24 15:44:41,417 - BenchExecutor - INFO - 正在启动进程...
+2025-11-24 15:45:46,480 - BenchExecutor - INFO - 基准测试成功完成 - 耗时: 65.06秒
+2025-11-24 15:45:46,480 - BenchExecutor - INFO - 成功处理 2 条基准测试结果记录
+2025-11-24 15:45:46,480 - TaskRunner - INFO - 用例执行完成 - 套件: tg_len_64_192_step16_p192_t1_c2, 成功: True
+2025-11-24 15:45:46,481 - TaskRunner - INFO - 已保存JSON结果: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/json_results/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/18.json
+2025-11-24 15:45:46,481 - TaskRunner - INFO - 已保存原始输出: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/18_raw.txt
+2025-11-24 15:45:46,481 - TaskRunner - INFO - 已保存执行参数: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/raw_outputs/qwen3_06b/tg_len_64_192_step16_p192_t1_c2/18_params.json
+2025-11-24 15:45:46,490 - TaskRunner - INFO - 实时写入case 18 成功 (case_id=274)
+2025-11-24 15:45:46,490 - TaskRunner - INFO - 批量任务执行完成，耗时: 829.23秒，成功: 18/18
+2025-11-24 15:45:46,490 - ResultManager - INFO - 任务摘要已保存: /home/phyer/mnn-tst/mnn_llm_benchmark/results/mnn_llm_tg_len_64_192_p192/20251124_153157/task_summary.json
+2025-11-24 15:55:42,003 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_gen
+2025-11-24 15:55:42,007 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 15:55:42,007 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 15:55:42,012 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 15:55:44,271 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 15:55:44,273 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 15:55:44,364 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_155542
+2025-11-24 15:55:44,364 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_155542
+2025-11-24 16:04:55,039 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_gen
+2025-11-24 16:04:55,044 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 16:04:55,044 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:04:55,048 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:04:57,336 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 16:04:57,337 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:04:57,430 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_160455
+2025-11-24 16:04:57,431 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_160455
+2025-11-24 16:10:35,995 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_prompt
+2025-11-24 16:10:36,002 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 16:10:36,003 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:10:36,008 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:10:39,394 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 16:10:39,396 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:10:39,547 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_prompt_20251124_161036
+2025-11-24 16:10:39,548 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_prompt_20251124_161036
+2025-11-24 16:13:43,465 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_gen
+2025-11-24 16:13:43,472 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 16:13:43,472 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:13:43,479 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:13:46,796 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 16:13:46,797 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:13:46,937 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_161343
+2025-11-24 16:13:46,938 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_161343
+2025-11-24 16:14:04,674 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: threads
+2025-11-24 16:14:04,680 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 16:14:04,680 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:14:04,681 - RegressionAnalyzer - ERROR - 回归分析失败: 有效数据点太少，无法进行回归分析
+2025-11-24 16:14:04,681 - DataAnalyzer - ERROR - 分析结果类型 pp 失败: 有效数据点太少，无法进行回归分析
+2025-11-24 16:14:04,681 - RegressionAnalyzer - ERROR - 回归分析失败: 有效数据点太少，无法进行回归分析
+2025-11-24 16:14:04,681 - DataAnalyzer - ERROR - 分析结果类型 tg 失败: 有效数据点太少，无法进行回归分析
+2025-11-24 16:14:04,681 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:14:06,208 - ChartGenerator - INFO - 生成了 2 个单变量分析图表
+2025-11-24 16:14:06,209 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:14:06,257 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/threads_20251124_161404
+2025-11-24 16:14:06,257 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/threads_20251124_161404
+2025-11-24 16:20:01,697 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_gen
+2025-11-24 16:20:01,703 - DataExtractor - INFO - 单变量分析筛选: 从128个案例中选择了128个案例
+2025-11-24 16:20:01,704 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:20:01,711 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:20:05,037 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 16:20:05,038 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:20:05,179 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_162001
+2025-11-24 16:20:05,179 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/2/n_gen_20251124_162001
+2025-11-24 16:30:46,773 - DataAnalyzer - INFO - 开始单变量分析 - 目标变量: n_gen
+2025-11-24 16:30:46,774 - DataExtractor - INFO - 单变量分析筛选: 从9个案例中选择了9个案例
+2025-11-24 16:30:46,774 - DataAnalyzer - INFO - 开始执行回归分析...
+2025-11-24 16:30:46,779 - DataAnalyzer - INFO - 开始生成分析报告...
+2025-11-24 16:30:48,956 - ChartGenerator - INFO - 生成了 4 个单变量分析图表
+2025-11-24 16:30:48,958 - ReportGenerator - INFO - 分析历史已记录到数据库，ID: -1
+2025-11-24 16:30:49,018 - ReportGenerator - INFO - 单变量分析报告生成完成: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/4/n_gen_20251124_163046
+2025-11-24 16:30:49,019 - DataAnalyzer - INFO - 单变量分析完成，报告保存在: /home/phyer/mnn-tst/mnn_llm_benchmark/web_server/static/analysis/4/n_gen_20251124_163046
+2025-11-25 14:18:51,644 - BatchBenchmark - INFO - 数据库管理器初始化成功
+2025-11-25 14:18:51,644 - BatchBenchmark - INFO - 开始批量基准测试任务
+2025-11-25 14:18:51,648 - TaskLoader - INFO - 成功加载任务文件: /home/phyer/mnn-tst/mnn_llm_benchmark/mnn_llm_t1_c2_kvfalse_mmp0_dyo0_pn_vp_pf.yaml
+2025-11-25 14:18:51,649 - CaseGenerator - INFO - 为 2 个模型生成测试用例（模型优先排序）
+2025-11-25 14:18:51,649 - CaseGenerator - INFO - 为模型 'qwen3_06b' 生成测试用例
+2025-11-25 14:18:51,675 - CaseGenerator - INFO - 为模型 'hunyuan_05b' 生成测试用例
+2025-11-25 14:18:51,702 - CaseGenerator - INFO - 总共生成 300 个测试用例
+2025-11-25 15:43:13,578 - BatchBenchmark - INFO - 批量基准测试任务完成: 200/300 成功

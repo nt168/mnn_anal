@@ -1,0 +1,50 @@
+{
+  "bench_id": "llama_3_2_1b_1764586772",
+  "timestamp": "2025-12-01 19:03:08",
+  "model": {
+    "alias": "llama_3_2_1b",
+    "name": "Llama-3.2-1B",
+    "config_path": "/home/phyer/mnn-tst/models/Llama-3.2-1B/config.json",
+    "size_mb": "662.91 MiB"
+  },
+  "execution": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/Llama-3.2-1B/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/llama_3_2_1b_1764586772_raw.txt -p 960 -n 96",
+    "timeout_seconds": 600,
+    "runtime_seconds": 216.712,
+    "return_code": 0,
+    "success": true
+  },
+  "bench_parameters": {
+    "threads": "uses_default",
+    "precision": "uses_default",
+    "n_prompt": 960,
+    "n_gen": 96,
+    "prompt_gen": "uses_default",
+    "n_repeat": "uses_default",
+    "kv_cache": "uses_default",
+    "mmap": "uses_default",
+    "dynamicOption": "uses_default"
+  },
+  "results": {
+    "prefill": {
+      "test_name": "pp960",
+      "tokens_per_sec": {
+        "mean": 33.14,
+        "std": 0.14,
+        "formatted": "33.14 ± 0.14"
+      }
+    },
+    "decode": {
+      "test_name": "tg96",
+      "tokens_per_sec": {
+        "mean": 15.19,
+        "std": 0.1,
+        "formatted": "15.19 ± 0.10"
+      }
+    }
+  },
+  "system_info": {
+    "backend": "CPU",
+    "hostname": "phyer"
+  }
+}

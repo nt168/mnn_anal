@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ suite.name }} - MNN LLM Bench</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/suite_detail.css') }}">
+</head>
+<body>
+    <!-- 全局折叠控制按钮 -->
+    <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAllTables()" title="折叠/展开所有表格">
+        <span id="toggleAllIcon">▼</span>
+    </button>
+
+    
+    <div class="container">
+        <div class="header">
+            <h1>{{ suite.description }}</h1>
+            <p>{{ suite.name }}</p>
+            <div class="header-bottom">
+                <a href="/" class="back-link">← 返回首页</a>
+                <div class="suite-id">ID: #{{ suite.id }}</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">模型</div>
+                    <div class="info-value">{{ suite.model_name }}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">模型大小</div>
+                    <div class="info-value">{{ suite.model_size or 'N/A' }}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">创建时间</div>
+                    <div class="info-value">{{ suite.created_at }}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">测试用例数量</div>
+                    <div class="info-value">{{ cases|length }} 个</div>
+                </div>
+            </div>
+
+            {% if analysis_results %}
+            <div class="params-section">
+                <div class="params-table-container">
+                    <h3 class="params-table-header" onclick="toggleTable('analysis-reports')">
+                        📊 分析报告 ({{ analysis_results|length }} 个)
+                        <span class="expand-arrow expanded" id="analysis-reports-arrow">▼</span>
+                    </h3>
+                    <div id="analysis-reports" class="collapsible-content expanded">
+                        <table class="params-table analysis-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>自变量</th>
+                                    <th>因变量</th>
+                                    <th>分析类型</th>
+                                    <th>HTML报告</th>
+                                    <th>Markdown</th>
+                                    <th>压缩包</th>
+                                    <th>完成时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for analysis in analysis_results %}
+                                <tr>
+                                    <td>
+                                        <span class="analysis-id">{{ analysis.id }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="analysis-variable">{{ analysis.target_variable }}</span>
+                                    </td>
+                                    <td>
+                                        {% if analysis.result_types %}
+                                        <div class="analysis-results">{{ analysis.result_types|join(', ')|upper }}</div>
+                                        {% else %}
+                                        <span class="no-data">无数据</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="analysis-type-badge">{{ analysis.analysis_type|title }}</span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ analysis.html_url }}" target="_blank" class="analysis-link html-link">
+                                            📄 查看
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {% if analysis.md_url %}
+                                        <a href="{{ analysis.md_url }}" target="_blank" class="analysis-link md-link">
+                                            📝 下载
+                                        </a>
+                                        {% else %}
+                                        <span class="no-file">未提供</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if analysis.zip_url %}
+                                        <a href="{{ analysis.zip_url }}" class="analysis-link zip-link" download>
+                                            📦 下载
+                                        </a>
+                                        {% else %}
+                                        <span class="no-file">未提供</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="analysis-time-short">{{ analysis.completed_at.split(' ')[0] if analysis.completed_at else '-' }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 套件固定参数配置表（可折叠）-->
+            {% if suite.suite_fixed_values or suite.suite_default_values %}
+            <div class="params-section">
+                <div class="params-table-container">
+                    <h3 class="params-table-header" onclick="toggleTable('suite-fixed-params')">
+                        套件固定参数配置
+                        <span class="expand-arrow expanded" id="suite-fixed-params-arrow">▼</span>
+                    </h3>
+                    <div id="suite-fixed-params" class="collapsible-content expanded">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>类型</th>
+                                    <th>名称</th>
+                                    <th>值</th>
+                                    <th>长参数名</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for param in suite.suite_fixed_values %}
+                                <tr class="param-type-fixed">
+                                    <td>
+                                        <span class="param-type-badge param-type-fixed">{{ param.type }}</span>
+                                    </td>
+                                    <td>{{ param.param_meta.name }}</td>
+                                    <td>{{ param.value }}</td>
+                                    <td>{{ param.param_meta.cli }}</td>
+                                    <td>{{ param.param_meta.note }}</td>
+                                </tr>
+                                {% endfor %}
+                                {% for param in suite.suite_default_values %}
+                                <tr class="param-type-default">
+                                    <td>
+                                        <span class="param-type-badge param-type-default">{{ param.type }}</span>
+                                    </td>
+                                    <td>{{ param.param_meta.name }}</td>
+                                    <td>{{ param.value }}</td>
+                                    <td>{{ param.param_meta.cli }}</td>
+                                    <td>{{ param.param_meta.note }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if cases|length > 0 %}
+                <div class="results-section">
+                    <h2 class="section-title">测试用例详情 ({{ cases|length }} 个)</h2>
+
+                    {% for case in cases %}
+                        <div class="case-card">
+                            <div class="case-header">
+                                <div class="case-title">{{ case.name }}</div>
+                                <div class="case-header-second">
+                                    <div class="case-meta">创建时间: {{ case.created_at }}</div>
+                                    {% if case.execution_time_seconds %}
+                                    <div class="case-meta execution-time">执行时间: {{ "%.3f"|format(case.execution_time_seconds) }} 秒</div>
+                                    {% endif %}
+                                    <div class="case-id">#{{ case.id }}</div>
+                                </div>
+                                <div class="case-status status-{{ case.status }}">{{ case.status|upper }}</div>
+                            </div>
+
+                            <!-- Case级别的变量参数显示 -->
+                            {% if case.variable_params %}
+                            <div class="params-table-container">
+                                <h4 class="params-table-header" onclick="toggleTable('case-{{ case.id }}-vars')">
+                                    变量参数配置
+                                    <span class="expand-arrow expanded" id="case-{{ case.id }}-vars-arrow">▼</span>
+                                </h4>
+                                <div id="case-{{ case.id }}-vars" class="collapsible-content expanded">
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>类型</th>
+                                                <th>名称</th>
+                                                <th>值</th>
+                                                <th>长参数名</th>
+                                                <th>备注</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for param in case.variable_params %}
+                                            <tr class="param-type-variable">
+                                                <td>
+                                                    <span class="param-type-badge param-type-variable">变量</span>
+                                                </td>
+                                                <td>{{ param.param_meta.name }}</td>
+                                                <td>{{ param.value }}</td>
+                                                <td>{{ param.param_meta.cli }}</td>
+                                                <td>{{ param.param_meta.note }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if case.results|length > 0 %}
+                            <div class="params-table-container results-table-container">
+                                <h4 class="params-table-header params-table-header-static">
+                                    测试结果 ({{ case.results|length }} 项)
+                                </h4>
+                                <table class="params-table">
+                                    <thead>
+                                        <tr>
+                                            <th>测试类型</th>
+                                            <th>参数</th>
+                                            <th>性能</th>
+                                            <th>标准差</th>
+                                            <th>单位</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for result in case.results %}
+                                            <tr>
+                                                <td>
+                                                    <span class="result-type-{{ result.result_type|replace('+', '_') }}">
+                                                        {{ result.result_type|upper }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ result.result_parameter }}</td>
+                                                <td>
+                                                    <span class="performance-value">{{ result.mean_value }}</span>
+                                                </td>
+                                                <td>{{ result.std_value }}</td>
+                                                <td>{{ result.unit }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                                <div class="params-table-container results-table-container">
+                                    <h4 class="params-table-header params-table-header-static">
+                                        测试结果 (0 项)
+                                    </h4>
+                                    <div class="case-results-empty">
+                                        <p>暂无测试结果</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="results-section">
+                    <h2 class="section-title">测试用例详情</h2>
+                    <div class="empty-results">
+                        <div>📊</div>
+                        <p>该套件暂无测试用例</p>
+                        <p>测试计划已创建但任务未执行</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+<script>
+function toggleAllTables() {
+    const allContents = document.querySelectorAll('.collapsible-content');
+    const allButtons = document.querySelector('#toggleAllBtn');
+    const toggleIcon = document.querySelector('#toggleAllIcon');
+
+    // 获取所有可折叠的内容
+    const collapsibleContents = Array.from(allContents);
+
+    // 检查是否所有可折叠表格都是展开状态
+    const allExpanded = collapsibleContents.every(content =>
+        content.classList.contains('expanded')
+    );
+
+    if (allExpanded) {
+        // 如果都是展开的，则全部收起
+        collapsibleContents.forEach(content => {
+            content.classList.remove('expanded');
+        });
+        document.querySelectorAll('.expand-arrow').forEach(arrow => {
+            const content = document.getElementById(arrow.id.replace('-arrow', ''));
+            if (content) {
+                arrow.classList.remove('expanded');
+                arrow.classList.add('collapsed');
+            }
+        });
+        toggleIcon.textContent = '▶';
+        allButtons.title = '展开所有表格';
+    } else {
+        // 如果有收起的，则全部展开
+        collapsibleContents.forEach(content => {
+            content.classList.add('expanded');
+        });
+        document.querySelectorAll('.expand-arrow').forEach(arrow => {
+            const content = document.getElementById(arrow.id.replace('-arrow', ''));
+            if (content) {
+                arrow.classList.add('expanded');
+                arrow.classList.remove('collapsed');
+            }
+        });
+        toggleIcon.textContent = '▼';
+        allButtons.title = '折叠所有表格';
+    }
+}
+
+function toggleTable(tableId) {
+    const content = document.getElementById(tableId);
+    const arrow = document.getElementById(tableId + '-arrow');
+
+    if (content) {
+        content.classList.toggle('expanded');
+    }
+
+    if (arrow) {
+        arrow.classList.toggle('expanded');
+        arrow.classList.toggle('collapsed');
+    }
+}
+
+function toggleAnalysisDropdown() {
+    const menu = document.getElementById('analysisMenu');
+    const arrow = document.querySelector('.dropdown-arrow');
+
+    if (menu) {
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        arrow.style.transform = menu.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+}
+
+// 点击页面其他地方关闭下拉菜单
+document.addEventListener('click', function(event) {
+    const dropdown = document.querySelector('.analysis-dropdown');
+    const menu = document.getElementById('analysisMenu');
+
+    if (dropdown && !dropdown.contains(event.target) && menu.style.display === 'block') {
+        menu.style.display = 'none';
+        document.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
+    }
+});
+</script>
+
+</body>
+</html>

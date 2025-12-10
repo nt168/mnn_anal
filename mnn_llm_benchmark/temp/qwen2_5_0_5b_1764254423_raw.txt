@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ---------- | ------------- | ---------: |
+| Qwen2.5-0.5B                   | 265.09 MiB | CPU        |     4 | Low        | true | fix        | pp896         | 72.76 ± 0.07 |
+| Qwen2.5-0.5B                   | 265.09 MiB | CPU        |     4 | Low        | true | fix        | tg96          | 28.40 ± 0.02 |
+

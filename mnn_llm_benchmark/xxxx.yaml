@@ -1,0 +1,33 @@
+task_name: "mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf"
+description: >
+  固定 -t 1, -c 2, -kv false, -mmp 0, -dyo 0, -rep 3，
+  在 p∈[96..168], n∈[32..64] 下，分别测试：
+  1) -vp 0；2) -vp 1；3) 使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt。
+
+output_dir: "results/mnn_llm_t1_c2_kvfalse_mmap0_dyo0_pn_vp_pf"
+
+global_config:
+  timeout: 600                # 每个用例最大运行时间
+  repeat: 3                   # -rep 3 固定
+  models: ["qwen3_06b","hunyuan_05b"]  # 替换成你自己的模型名
+
+benchmark_suits:
+  # --- 情况 3: 使用 -pf 指定 prompt 文件 ---
+  - suit_name: "pn_grid_pf_file"
+    description: >
+      -t 1, -c 2, -kv false, -mmp 0, -dyo 0，
+      使用 -pf /home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt，
+      扫描同样的 p/n 网格。
+    variables:
+      - name: "n_prompt"
+        values: [96, 104, 112, 120, 128, 136, 144, 152, 160, 168]
+      - name: "n_gen"
+        values: [32, 40, 48, 56, 64]
+    fixed_params:
+      threads: 1
+      precision: 2
+      kv_cache: "false"
+      mmap: "0"
+      dynamicOption: 0
+      prompt_file: "/home/phyer/mnn-tst/mnn_llm_benchmark/test_prompt.txt"  # 对应 -pf
+

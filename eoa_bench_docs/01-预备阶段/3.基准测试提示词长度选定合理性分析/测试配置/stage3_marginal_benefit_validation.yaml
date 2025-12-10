@@ -1,0 +1,98 @@
+task_name: "阶段3：边际效益验证"
+description: "验证收敛后的收益递减规律，确认继续增加长度的必要性"
+output_dir: "results/stage3_marginal_benefit_validation"
+
+global_config:
+  timeout: 2100
+  models: [qwen3_0_6b]
+
+benchmark_suits:
+# 边际效益验证主测试套件
+- suit_name: "post_convergence_extension_test"
+  description: "基于阶段2收敛点向前延伸测试，验证边际效益递减"
+
+  variables:
+  # 基于收敛点的延伸测试
+  - name: n_prompt
+    values: [64, 80, 96, 112, 128, 144, 160, 192, 224, 256, 320, 384, 448, 512]
+    description: "从收敛点开始的延伸测试，14个点验证边际效益递减规律"
+
+  fixed_params:
+    n_repeat: 15              # 15次重复确保统计可靠性
+    n_generate: "__stage0_selected__"  # 使用阶段0确定的生成长度
+    threads: 4                 # 保持一致性
+    precision: 1               # Normal精度
+    variable_prompt: 0         # 固定提示词模式
+    kv_cache: "false"          # 禁用KV缓存
+
+# 成本效益分析测试
+- suit_name: "cost_benefit_analysis"
+  description: "分析测试时间增长与CV改善的成本效益关系"
+
+  variables:
+  # 成本效益分析的长度点
+  - name: n_prompt
+    values: [64, 80, 100, 128, 160, 200, 256, 320]
+    description: "成本效益分析专用采样点，8个关键长度"
+
+  fixed_params:
+    n_repeat: 12              # 平衡精度和效率
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 效益递减确认测试
+- suit_name: "benefit_diminishing_confirmation"
+  description: "高精度验证边际效益递减现象的持续性"
+
+  variables:
+  # 边际效益关键验证点
+  - name: n_prompt
+    values: [64, 72, 80, 88, 96, 104, 112, 120, 128, 144, 160]
+    description: "边际效益递减确认的关键点，11个长度"
+
+  fixed_params:
+    n_repeat: 20              # 高重复确保验证精度
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 终止条件量化测试
+- suit_name: "termination_condition_quantification"
+  description: "量化和验证测试终止条件的具体阈值"
+
+  variables:
+  # 终止条件验证的边界点
+  - name: n_prompt
+    values: [96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256]
+    description: "终止条件量化的边界测试，11个点"
+
+  fixed_params:
+    n_repeat: 18              # 高重复确保条件验证
+    n_generate: "__stage0_selected__"
+    threads: 4
+    precision: 1
+    variable_prompt: 0
+    kv_cache: "false"
+
+# 配置说明：
+# 1. 测试目标：验证收敛后的边际效益递减规律
+# 2. 核心分析方法：
+#    - 边际效益率 = CV改善幅度 / 测试时间增长
+#    - 收益递减判断：连续3个长度点边际效益 < 5%
+#    - 时间终止条件：time_growth > 2 * benefit_improvement
+#    - 效益终止条件：marginal_benefit < 5% for 3+ points
+# 3. 测试策略：
+#    - 延伸测试：从收敛点到长长度的完整递减验证
+#    - 成本效益：8个关键点的成本效益分析
+#    - 递减确认：高精度验证递减持续性
+#    - 终止量化：确定终止条件的具体阈值
+# 4. 分析重点：
+#    - CV改善幅度是否持续低于5%
+#    - 测试时间增长是否超过收益2倍
+#    - 效益/成本曲线拐点位置
+# 5. 预期结果：确认边际效益递减现象，为参数选择提供依据

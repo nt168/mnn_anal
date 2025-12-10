@@ -1,0 +1,11 @@
+{
+  "case_number": 5,
+  "suit_name": "pn_grid_t2",
+  "model": "hunyuan_05b_2t",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 3,7 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/hunyuan_05b-2t/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_2t_1764159556_raw.txt -p 512 -n 64",
+    "return_code": 0,
+    "runtime": 35.4755539894104
+  }
+}

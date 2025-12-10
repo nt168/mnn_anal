@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---------- | ------------- | ---------: |
+| Llama-3.2-1B                   | 662.91 MiB | CPU        |     4 | Low        | fix        | pp512         | 35.60 ± 0.04 |
+| Llama-3.2-1B                   | 662.91 MiB | CPU        |     4 | Low        | fix        | tg32          | 15.59 ± 0.01 |
+

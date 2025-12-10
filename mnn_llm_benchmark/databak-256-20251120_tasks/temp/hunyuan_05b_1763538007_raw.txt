@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | mmap | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---: | ------------- | ---------: |
+| hunyuan_05b                    | 380.67 MiB | CPU        |     1 | Normal     | true | pp128         | 67.87 ± 0.02 |
+| hunyuan_05b                    | 380.67 MiB | CPU        |     1 | Normal     | true | tg64          | 25.75 ± 0.01 |
+

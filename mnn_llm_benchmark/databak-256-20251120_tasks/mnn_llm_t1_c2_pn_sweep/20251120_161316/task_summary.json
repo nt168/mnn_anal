@@ -1,0 +1,90 @@
+{
+  "task_info": {
+    "name": "mnn_llm_t1_c2_pn_sweep",
+    "description": "t=1, c=2, kv=false, mmap=0, dyo=0 下，扫描 p/n 组合对性能的影响",
+    "execution_time": 0.04266858100891113,
+    "timestamp": "2025-11-20T16:13:16.853416",
+    "preview_mode": true
+  },
+  "statistics": {
+    "total_cases": 256,
+    "successful_cases": 256,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "预览模式 - 未实际执行基准测试"
+  },
+  "suite_statistics": {
+    "unknown": {
+      "total": 256,
+      "success": 256,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "qwen3_06b",
+    "hunyuan_05b"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_t1_c2_pn_sweep",
+    "description": "t=1, c=2, kv=false, mmap=0, dyo=0 下，扫描 p/n 组合对性能的影响",
+    "output_dir": "results/mnn_llm_t1_c2_pn_sweep",
+    "taskset": "taskset -c 1",
+    "global_config": {
+      "timeout": 600,
+      "repeat": 3,
+      "models": [
+        "qwen3_06b",
+        "hunyuan_05b"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_grid_t1_c2_kvfalse_mmap0_dyo0",
+        "description": "threads=1, precision=2, kv=false, mmap=0, dynamicOption=0 固定时，扫描不同 p/n 组合",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              64,
+              128,
+              192,
+              256,
+              320,
+              384,
+              448,
+              512,
+              576,
+              640,
+              704,
+              768,
+              832,
+              896,
+              960,
+              1024
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              32,
+              64,
+              96,
+              128,
+              160,
+              192,
+              224,
+              256
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0
+        }
+      }
+    ]
+  }
+}

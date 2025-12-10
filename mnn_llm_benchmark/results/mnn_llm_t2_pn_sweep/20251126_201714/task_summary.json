@@ -1,0 +1,69 @@
+{
+  "task_info": {
+    "name": "mnn_llm_t2_pn_sweep",
+    "description": "多线程（t=2）下的 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=true。 p ∈ {192, 384, 512}，n ∈ {64, 128}。\n",
+    "execution_time": 203.83325219154358,
+    "timestamp": "2025-11-26T20:20:38.441749",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 6,
+    "successful_cases": 6,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "pn_grid_t2": {
+      "total": 6,
+      "success": 6,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "hunyuan_05b_2t"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_t2_pn_sweep",
+    "description": "多线程（t=2）下的 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=true。 p ∈ {192, 384, 512}，n ∈ {64, 128}。\n",
+    "taskset": "taskset -c 3,7",
+    "output_dir": "results/mnn_llm_t2_pn_sweep",
+    "global_config": {
+      "threads": 2,
+      "repeat": 3,
+      "precision": 2,
+      "mmap": "0",
+      "dynamicOption": 0,
+      "vp": 1,
+      "kv_cache": "true",
+      "timeout": 600,
+      "models": [
+        "hunyuan_05b_2t"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_grid_t2",
+        "description": "p ∈ {192, 384, 512}，n ∈ {64, 128} 的笛卡尔积扫描。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              192,
+              384,
+              512
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              64,
+              128
+            ]
+          }
+        ],
+        "fixed_params": {}
+      }
+    ]
+  }
+}

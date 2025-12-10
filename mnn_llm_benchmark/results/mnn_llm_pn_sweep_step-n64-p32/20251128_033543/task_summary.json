@@ -1,0 +1,70 @@
+{
+  "task_info": {
+    "name": "mnn_llm_pn_sweep_step-n64-p32",
+    "description": "单线程（t=1）下的大范围 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=false。 p从64开始到1024，步长为64，n从32开始到约128，步长为32。\n",
+    "execution_time": 14641.569264888763,
+    "timestamp": "2025-11-28T07:39:45.520056",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 192,
+    "successful_cases": 192,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "pn_sweep_step-n64-p32": {
+      "total": 192,
+      "success": 192,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "qwen2_5_0_5b",
+    "llama_3_2_1b",
+    "smolvlm2_256m"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_pn_sweep_step-n64-p32",
+    "description": "单线程（t=1）下的大范围 p/n 组合测试。 固定参数：rep=3, c=2, mmp=0, dyo=0, vp=1, kv=false。 p从64开始到1024，步长为64，n从32开始到约128，步长为32。\n",
+    "taskset": "taskset -c 1",
+    "output_dir": "results/mnn_llm_pn_sweep_step-n64-p32",
+    "global_config": {
+      "threads": 1,
+      "repeat": 3,
+      "precision": 2,
+      "mmap": "0",
+      "dynamicOption": 0,
+      "vp": 1,
+      "kv_cache": "false",
+      "timeout": 600,
+      "models": [
+        "qwen2_5_0_5b",
+        "llama_3_2_1b",
+        "smolvlm2_256m"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_sweep_step-n64-p32",
+        "description": "p从64开始到1024，步长为64，n从32开始到约128，步长为32。\n",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "start": 64,
+            "end": 1024,
+            "step": 64
+          },
+          {
+            "name": "n_gen",
+            "start": 32,
+            "end": 128,
+            "step": 32
+          }
+        ],
+        "fixed_params": {}
+      }
+    ]
+  }
+}

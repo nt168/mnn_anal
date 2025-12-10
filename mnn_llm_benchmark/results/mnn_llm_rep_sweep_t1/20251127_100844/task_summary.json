@@ -1,0 +1,76 @@
+{
+  "task_info": {
+    "name": "mnn_llm_rep_sweep_t1",
+    "description": "单线程 t=1 下扫描 rep 对性能的影响。 固定参数：t=1, c=2, mmp=0, dyo=0, vp=1, kv=true。 变量：rep ∈ {2,3,4,5}，p ∈ {192,384,512}，n=64。\n",
+    "execution_time": 505.4806315898895,
+    "timestamp": "2025-11-27T10:17:10.191582",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 12,
+    "successful_cases": 12,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "rep_p_grid_t1": {
+      "total": 12,
+      "success": 12,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "hunyuan_05b_1t"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_rep_sweep_t1",
+    "description": "单线程 t=1 下扫描 rep 对性能的影响。 固定参数：t=1, c=2, mmp=0, dyo=0, vp=1, kv=true。 变量：rep ∈ {2,3,4,5}，p ∈ {192,384,512}，n=64。\n",
+    "taskset": "taskset -c 3",
+    "output_dir": "results/mnn_llm_rep_sweep_t1",
+    "global_config": {
+      "threads": 1,
+      "precision": 2,
+      "mmap": "0",
+      "dynamicOption": 0,
+      "vp": 1,
+      "kv_cache": "true",
+      "timeout": 600,
+      "models": [
+        "hunyuan_05b_1t"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "rep_p_grid_t1",
+        "description": "扫描 rep ∈ {2,3,4,5} 与 p ∈ {192,384,512}， n 固定为 64，观察重复次数对稳定性的影响。\n",
+        "variables": [
+          {
+            "name": "repeat",
+            "values": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "n_prompt",
+            "values": [
+              192,
+              384,
+              512
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              64
+            ]
+          }
+        ],
+        "fixed_params": {}
+      }
+    ]
+  }
+}

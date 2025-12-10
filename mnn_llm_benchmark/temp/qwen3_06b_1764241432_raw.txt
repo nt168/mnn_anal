@@ -1,0 +1,5 @@
+| model                          |  modelSize | backend    | threads | precision  | pType      | test          |        t/s |
+| ------------------------------ | ---------: | ---------- | ----: | ---------- | ---------- | ------------- | ---------: |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Low        | fix        | pp112         | 67.50 ± 0.01 |
+| qwen3_06b                      | 429.93 MiB | CPU        |     1 | Low        | fix        | tg32          | 27.91 ± 0.01 |
+

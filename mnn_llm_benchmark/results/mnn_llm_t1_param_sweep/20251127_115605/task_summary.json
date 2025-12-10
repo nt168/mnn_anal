@@ -1,0 +1,124 @@
+{
+  "task_info": {
+    "name": "mnn_llm_t1_param_sweep",
+    "description": "t=1 时，在固定 p=128, n=64 下，分别评估 dynamicOption/mmap/precision/kv_cache 对性能的影响",
+    "execution_time": 2677.086786031723,
+    "timestamp": "2025-11-27T12:40:42.694172",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 28,
+    "successful_cases": 28,
+    "failed_cases": 0,
+    "success_rate": "100.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "dynamic_option_effect_t1": {
+      "total": 18,
+      "success": 18,
+      "failed": 0
+    },
+    "mmap_effect_t1": {
+      "total": 4,
+      "success": 4,
+      "failed": 0
+    },
+    "precision_effect_t1": {
+      "total": 6,
+      "success": 6,
+      "failed": 0
+    }
+  },
+  "models_used": [
+    "qwen3_06b",
+    "hunyuan_05b"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_t1_param_sweep",
+    "description": "t=1 时，在固定 p=128, n=64 下，分别评估 dynamicOption/mmap/precision/kv_cache 对性能的影响",
+    "output_dir": "results/mnn_llm_t1_param_sweep",
+    "taskset": "taskset -c 1",
+    "global_config": {
+      "timeout": 600,
+      "repeat": 3,
+      "models": [
+        "qwen3_06b",
+        "hunyuan_05b"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "dynamic_option_effect_t1",
+        "description": "t=1, p=128, n=64, c=0, kv=false, mmap=0 时，dynamicOption 0-8 对性能的影响",
+        "variables": [
+          {
+            "name": "dynamicOption",
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 0,
+          "kv_cache": "false",
+          "mmap": "0",
+          "n_prompt": 512,
+          "n_gen": 128
+        }
+      },
+      {
+        "suit_name": "mmap_effect_t1",
+        "description": "t=1, p=128, n=64, c=0, dyo=0, kv=false 时，mmap 0/1 对性能的影响",
+        "variables": [
+          {
+            "name": "mmap",
+            "values": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 0,
+          "dynamicOption": 0,
+          "kv_cache": "false",
+          "n_prompt": 512,
+          "n_gen": 128
+        }
+      },
+      {
+        "suit_name": "precision_effect_t1",
+        "description": "t=1, p=128, n=64, dyo=0, kv=false, mmap=0 时，precision 0/1/2 对性能的影响",
+        "variables": [
+          {
+            "name": "precision",
+            "values": [
+              0,
+              1,
+              2
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "dynamicOption": 0,
+          "kv_cache": "false",
+          "mmap": "0",
+          "n_prompt": 512,
+          "n_gen": 128
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "case_number": 31,
+  "suit_name": "pn_grid_t1_c2_kvfalse_mmap0_dyo0",
+  "model": "qwen3_06b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/qwen3_06b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/qwen3_06b_1763602315_raw.txt -t 1 -c 2 -p 256 -n 224 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 79.57538747787476
+  }
+}

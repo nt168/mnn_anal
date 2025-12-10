@@ -1,0 +1,11 @@
+{
+  "case_number": 19,
+  "suit_name": "dynamic_option_effect_t1",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "/home/phyer/mnn-tst/phy_mnn/build/llm_bench -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1763537779_raw.txt -t 1 -c 0 -p 128 -n 64 -kv false -mmp 0 -dyo 2",
+    "return_code": 0,
+    "runtime": 31.696038007736206
+  }
+}

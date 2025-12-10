@@ -1,0 +1,11 @@
+{
+  "case_number": 233,
+  "suit_name": "pn_grid_vp1",
+  "model": "hunyuan_05b",
+  "execution_params": {},
+  "execution_result": {
+    "command": "taskset -c 1 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/hunyuan_05b/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1764245786_raw.txt -t 1 -c 2 -p 144 -n 48 -kv false -mmp 0 -dyo 0",
+    "return_code": 0,
+    "runtime": 25.321915864944458
+  }
+}

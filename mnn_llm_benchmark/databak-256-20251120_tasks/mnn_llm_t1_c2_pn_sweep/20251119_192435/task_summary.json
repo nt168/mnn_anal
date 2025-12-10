@@ -1,0 +1,87 @@
+{
+  "task_info": {
+    "name": "mnn_llm_t1_c2_pn_sweep",
+    "description": "t=1, c=2, kv=false, mmap=0, dyo=0 下，扫描 p/n 组合对性能的影响",
+    "execution_time": 0.05205059051513672,
+    "timestamp": "2025-11-19T19:24:35.890579",
+    "preview_mode": false
+  },
+  "statistics": {
+    "total_cases": 128,
+    "successful_cases": 0,
+    "failed_cases": 128,
+    "success_rate": "0.0%",
+    "note": "实际执行结果"
+  },
+  "suite_statistics": {
+    "pn_grid_t1_c2_kvfalse_mmap0_dyo0": {
+      "total": 128,
+      "success": 0,
+      "failed": 128
+    }
+  },
+  "models_used": [
+    "your_model_alias"
+  ],
+  "configuration": {
+    "task_name": "mnn_llm_t1_c2_pn_sweep",
+    "description": "t=1, c=2, kv=false, mmap=0, dyo=0 下，扫描 p/n 组合对性能的影响",
+    "output_dir": "results/mnn_llm_t1_c2_pn_sweep",
+    "global_config": {
+      "timeout": 600,
+      "repeat": 3,
+      "models": [
+        "your_model_alias"
+      ]
+    },
+    "benchmark_suits": [
+      {
+        "suit_name": "pn_grid_t1_c2_kvfalse_mmap0_dyo0",
+        "description": "threads=1, precision=2, kv=false, mmap=0, dynamicOption=0 固定时，扫描不同 p/n 组合",
+        "variables": [
+          {
+            "name": "n_prompt",
+            "values": [
+              64,
+              128,
+              192,
+              256,
+              320,
+              384,
+              448,
+              512,
+              576,
+              640,
+              704,
+              768,
+              832,
+              896,
+              960,
+              1024
+            ]
+          },
+          {
+            "name": "n_gen",
+            "values": [
+              32,
+              64,
+              96,
+              128,
+              160,
+              192,
+              224,
+              256
+            ]
+          }
+        ],
+        "fixed_params": {
+          "threads": 1,
+          "precision": 2,
+          "kv_cache": "false",
+          "mmap": "0",
+          "dynamicOption": 0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "bench_id": "hunyuan_05b_1t_1764209703",
+  "timestamp": "2025-11-27 10:15:33",
+  "model": {
+    "alias": "hunyuan_05b_1t",
+    "name": "hunyuan_05b-1t",
+    "config_path": "/home/phyer/mnn-tst/models/hunyuan_05b-1t/config.json",
+    "size_mb": "380.67 MiB"
+  },
+  "execution": {
+    "command": "taskset -c 3 /home/phyer/mnn-tst/phy_mnn/build/llm_bench_prompt -m /home/phyer/mnn-tst/models/hunyuan_05b-1t/config.json -fp /home/phyer/mnn-tst/mnn_llm_benchmark/temp/hunyuan_05b_1t_1764209703_raw.txt -p 192 -n 64",
+    "timeout_seconds": 600,
+    "runtime_seconds": 29.711,
+    "return_code": 0,
+    "success": true
+  },
+  "bench_parameters": {
+    "threads": "uses_default",
+    "precision": "uses_default",
+    "n_prompt": 192,
+    "n_gen": 64,
+    "prompt_gen": "uses_default",
+    "n_repeat": "uses_default",
+    "kv_cache": "uses_default",
+    "mmap": "uses_default",
+    "dynamicOption": "uses_default"
+  },
+  "results": {
+    "prefill": {
+      "test_name": "pp192",
+      "tokens_per_sec": {
+        "mean": 99.04,
+        "std": 0.02,
+        "formatted": "99.04 ± 0.02"
+      }
+    },
+    "decode": {
+      "test_name": "tg64",
+      "tokens_per_sec": {
+        "mean": 26.45,
+        "std": 0.01,
+        "formatted": "26.45 ± 0.01"
+      }
+    }
+  },
+  "system_info": {
+    "backend": "CPU",
+    "hostname": "phyer"
+  }
+}
