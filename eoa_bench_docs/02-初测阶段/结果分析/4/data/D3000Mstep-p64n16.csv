@@ -1,0 +1,54 @@
+,,,,,,,,
+模型,"任务(在 0,1,2,4,5,6 6个小核上运行)",,性能,,,,,
+,描述,参数,预填tps,方差,解码tps,方差,加载,方差
+"Qwen3_0.6B
+模型文件0.461M
+权重文件451M",p参数从256开始每次step 64token到512长、n参数从32开始每次step 16token到64长,"t=6, p=256, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",308.22,0.14,69.83,0.03,1.16,0.57
+,,"t=6, p=256, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",308.62,0.51,74.22,0,0.42,0.08
+,,"t=6, p=256, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",308.26,0.14,74.25,0.02,0.42,0.08
+,,"t=6, p=320, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",297.51,0.09,71.87,0.01,0.42,0.08
+,,"t=6, p=320, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",298.66,0.3,71.64,0.03,0.42,0.08
+,,"t=6, p=320, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",297.23,0.39,71.45,0.01,0.42,0.08
+,,"t=6, p=384, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",290.23,0.06,69.19,0.03,0.42,0.08
+,,"t=6, p=384, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",290.59,0.14,69,0.04,0.43,0.08
+,,"t=6, p=384, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",289.39,0.19,68.4,0.04,0.42,0.07
+,,"t=6, p=448, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",279.71,0.04,66.7,0.02,0.42,0.08
+,,"t=6, p=448, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",279.95,0.06,66.04,0.03,0.42,0.08
+,,"t=6, p=448, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",278.02,0.31,65.93,0.01,0.42,0.08
+,,"t=6, p=512, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",269.48,0.11,64.07,0.02,0.42,0.08
+,,"t=6, p=512, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",269.49,0.08,63.67,0.04,0.42,0.08
+,,"t=6, p=512, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",269.44,0.02,63.65,0.01,0.42,0.08
+"hunyuan_05B
+模型文件0.398M
+权重文件399M",p参数从256开始每次step 64token到512长、n参数从32开始每次step 16token到64长,"t=6, p=256, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",322.58,0.33,38.84,0,1.53,0.12
+,,"t=6, p=256, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",332.18,0.3,38.8,0.05,1.49,0.1
+,,"t=6, p=256, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",332.59,0.36,38.62,0,1.49,0.1
+,,"t=6, p=320, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",323.97,0.08,38.03,0.04,1.5,0.1
+,,"t=6, p=320, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",324.3,0.22,38.02,0.02,1.51,0.1
+,,"t=6, p=320, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",323.09,0.28,38.01,0.02,1.49,0.1
+,,"t=6, p=384, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",315.22,0.05,37.4,0.02,1.5,0.1
+,,"t=6, p=384, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",316.31,0.2,37.37,0.01,1.49,0.11
+,,"t=6, p=384, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",315.64,0.09,37.36,0.01,1.5,0.1
+,,"t=6, p=448, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",306.12,0.54,36.74,0.01,1.49,0.11
+,,"t=6, p=448, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",306.09,0.6,36.67,0.01,1.5,0.1
+,,"t=6, p=448, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",305.47,0.67,36.51,0,1.49,0.1
+,,"t=6, p=512, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",295.89,0.12,35.83,0.01,1.5,0.1
+,,"t=6, p=512, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",296.04,0.17,35.99,0,1.5,0.1
+,,"t=6, p=512, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",296.3,0.15,36.01,0,1.49,0.1
+"SmolVLM2-256M
+模型文件0.476M
+权重文件150M",p参数从256开始每次step 64token到512长、n参数从32开始每次step 16token到64长,"t=6, p=256, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1127.26,0.91,83.97,0.17,0.72,0.02
+,,"t=6, p=256, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1127.78,0.14,84.22,0.16,0.81,0.03
+,,"t=6, p=256, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1127.85,0.25,84.37,0.08,0.7,0.03
+,,"t=6, p=320, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1087.6,0.81,82.66,0.12,0.7,0.03
+,,"t=6, p=320, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1085.88,1.25,82.46,0.08,0.7,0.03
+,,"t=6, p=320, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1085.85,1.81,82.24,0.05,0.71,0.03
+,,"t=6, p=384, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1056.07,1.13,81.22,0.06,0.82,0.03
+,,"t=6, p=384, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1052.99,0.19,81.88,0.1,0.7,0.03
+,,"t=6, p=384, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1050.7,0.29,81.95,0.04,0.71,0.03
+,,"t=6, p=448, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1002.99,1.62,80.76,0.25,0.71,0.03
+,,"t=6, p=448, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1001.58,1.88,80.77,0.09,0.7,0.03
+,,"t=6, p=448, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",1005.6,0.47,80.8,0.04,0.7,0.03
+,,"t=6, p=512, n=32, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",957.1,0.1,80.09,0.17,0.7,0.03
+,,"t=6, p=512, n=48, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",960.57,0.62,79.83,0.02,0.7,0.03
+,,"t=6, p=512, n=64, c=2, kv=true, mmp=true,dyo=7,vp=1,load=true(1)",960.42,0.65,80.14,0.26,0.71,0.03

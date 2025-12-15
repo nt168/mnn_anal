@@ -1,0 +1,27 @@
+task_name: "MNN LLM 批量性能基准测试"
+description: "测试不同生成序列长度下的模型性能"
+output_dir: "results/batch_test_$(date +%Y%m%d_%H%M%S)"
+
+global_config:
+  timeout: 300
+  repeat: 3
+  models:
+    - qwen3_0_6b
+
+benchmark_suits:
+  - suit_name: n_prompt_pp_170_240_threads_1_test
+    description: 测试线程threads=4对pp的影响
+    variables:
+      - name: "n_prompt"
+        start: 170
+        end: 240
+        step: 1
+    fixed_params:
+      threads: 1
+      n_repeat: 3
+      precision: 2
+      mmap: 1
+      dynamicOption: 7
+      vp: 1
+      kv_cache: "true"
+      n_gen: 64
